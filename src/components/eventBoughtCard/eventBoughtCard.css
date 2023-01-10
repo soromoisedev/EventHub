@@ -1,0 +1,13 @@
+.removeTicket{
+	width: max-content;
+	font-size: 1.1rem;
+	background: #ff000099;
+	color: white;
+	border: none;
+	font-weight: bold;
+	margin: 0;
+}
+.removeTicket:hover{
+	border: none;
+	background: #ff0000bd;
+}

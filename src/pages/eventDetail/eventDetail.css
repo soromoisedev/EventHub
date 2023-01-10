@@ -1,0 +1,120 @@
+.eventDetail{
+	background: whitesmoke;
+	width: 80%;
+	min-width: 400px;
+	border-radius: 15px 15px 10px 10px;
+	border: solid 1px blueviolet;
+	position: absolute;
+	transition: 100ms;
+	top: 25vh;
+	left: 10%;
+	min-height: 200px;
+	margin-bottom: 50px;
+}
+.eventDetail .title{
+	font-size: 1.5rem;
+	color: blueviolet;
+	text-align: center;
+	margin-top: 10px;
+}
+.eventDetail .buyButton{
+	width: 120px;
+	color: green;
+	border: solid 2px green;
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 10px 25px;
+	box-shadow: 1px 1px 5px #59716d8a;
+	cursor: pointer;
+	transition: border 100ms;
+	height: min-content;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.eventDetail .buyButton:hover{
+	box-shadow: 2px 2px 10px #6a8c86;
+	border: solid 3px green;
+}
+.button {
+	height: min-content;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+.description {
+	height: 75%;
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+	margin: 40px 20px 120px 20px;
+}
+.frexLine{
+	display: flex;
+	justify-content: space-around;
+	position: absolute;
+	bottom: 80px;
+	width: 100%;
+}
+.date {
+	/* position: absolute;
+	bottom: 80px;
+	right: 20px; */
+	/* font-weight: bold; */
+}
+.location{
+	/* position: absolute;
+	bottom: 80px;
+	left: 20px; */
+	/* font-weight: bold; */
+}
+.eventDetail .colorElement{
+	color: blueviolet;
+	font-weight: bold;
+}
+.price{
+	position: absolute;
+	bottom: 20px;
+	left: 30px;
+	font-size: 1.5rem;
+}
+.price .colorElement{
+	font-size: 2rem;
+}
+.returnEventDetailButton {
+	margin: 0px;
+	width: 160px;
+	height: 50px;
+	color: blueviolet;
+	border-color: blueviolet;
+	position: relative;
+	top: 116px;
+	left: 25px;
+	border-radius: 10px;
+	padding: 0px;
+}
+.returnEventDetailButton:hover{
+	color: blueviolet;
+	border-color: blueviolet;
+}
+.returnEventDetail {
+	text-decoration: none;
+	display: flex;
+	justify-content: space-between;
+	/* position: relative; */
+	align-items: center;
+	/* top: 100px; */
+	color: blueviolet;
+	/* border-color: blueviolet; */
+	padding: 10px 20px;
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+.returnEventDetail:hover{
+	color: blueviolet;
+	border-color: blueviolet;
+}
+
+
+/* const { title, description, date, status, location, price } = useSelector(state => state.eventList)?.filter(el => el["id"] === Number(id))[0] */

@@ -1,0 +1,54 @@
+.adminDash {
+	margin: 70px 0 0 0;
+}
+.userListTitle {
+	font-size: 1.9rem;
+	text-align: center;
+	margin: 45px 0 12px 0;
+}
+.userCard{
+	margin: 5px 0px;
+  background: #f5f5f5aa;
+  padding: 20px;
+  border-radius: 15px;
+	font-size: 1.4rem;
+}
+.userCard:hover{
+	background: #f2f2f2;
+}
+.userCard .colorElement {
+    font-weight: bold;
+    color: blueviolet;
+}
+.userCard .addressCard{
+	display: flex;
+	/* font-size: 1.0rem; */
+	justify-content: flex-start;
+	padding: 10px 0;
+}
+.userCard .addressCard .phoneNumber{
+	margin-left: 20px;
+}
+.roleButton {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.roleButton .desactivate{
+	color: #ff0000bb;
+	border-color: #ff0000bb;
+	width: auto;
+}
+.roleButton .desactivate:hover{
+	color: red;
+	border-color: red;
+}
+.roleButton .showEventList{
+	width: auto;
+}
+.usernameCard {
+	text-align: center;
+	/* font-size: 1.1rem; */
+	color: blue;
+	padding: 10px;
+}

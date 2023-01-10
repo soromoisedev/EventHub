@@ -1,0 +1,94 @@
+.dashboard{
+	margin: 70px 0px 0px 0px;
+}
+.DTitle {
+	font-size: 2.2rem;
+	text-align: center;
+	padding-top: 20px;
+	letter-spacing: 4px;
+	font-weight: 500;
+}
+.topButtons {
+	display: flex;
+	margin: 30px 20px;
+	justify-content: flex-end;
+	align-content: center;
+}
+/* .editPersonnalInfo {
+	display: flex;
+	align-items: center;
+	font-size: 1.1rem;
+} */
+.createNewEvent {
+	width: auto;
+	display: flex;
+  align-items: center;
+	font-size: 1.1rem;
+}
+.editPersonnalInfo:hover{
+	color: white;
+	background: green;
+	border-color: black;
+}
+.createNewEvent:hover{
+	color: white;
+	background: green;
+	border-color: black;
+}
+.dashboard .userEventList{
+	margin: 50px auto 70px auto;
+	border: solid 2px black;
+	border-radius: 15px 15px 5px 5px;
+	width: 90%;
+	max-width: 1500px;
+}
+.dashboard .title {
+	font-size: 1.6rem;
+	text-align: center;
+	letter-spacing: 1px;
+	background: #d9d9d9;
+	font-weight: 500;
+	padding: 15px 0px;
+	border-bottom: solid 2px black;
+	border-radius: 15px 15px 0 0;
+}
+.dashboard .eventList {
+	margin: 15px 5px;
+}
+.dashboard .eventListCard {
+	min-height: 135px;
+	margin: 0px 0px 20px 0px;
+}
+.dashTopButton{
+	height: unset;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	width: auto;
+}
+.EmptyList{
+	font-size: 3rem;
+	text-align: center;
+	/* position: absolute; */
+	/* top: 30vh; */
+	margin: 100px 0px;
+}
+.dashboard .userEventList div {
+	transition: 1ms;
+}
+.dashButtonActive{
+	color: white;
+	background: rgb(0, 147, 0);
+	border-color: black;
+}
+/******************** RESPONSIVE ********************/
+@media screen and (max-width: 500px) {
+	.dashboard .userEventList{
+		width: 99%;
+	}
+}
+@media screen and (min-width: 800px) {
+	.dashboard .eventList{
+		margin: 15px 20px;
+	}
+}

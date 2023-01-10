@@ -1,0 +1,12 @@
+.listUserParticipate{
+	width: max-content;
+	font-size: 1.0rem;
+}
+.listAllUserParticipate{
+	width: max-content;
+	font-size: 1.0rem;
+	background: none;
+}
+.userEventList .allUser{
+	margin: 35px 10px 0px 0px;
+}

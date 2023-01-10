@@ -1,0 +1,165 @@
+.eventList{
+	margin-top: 70px;
+}
+.fixBoxSearch {
+	width: 100%;
+	display: grid;
+	position: fixed;
+	top: 70px;
+	background: white;
+	box-shadow: 0px 2px 15px -9px #0000005e;
+}
+.eventListTitle{
+	text-align: center;
+	font-size: 2rem;
+	margin: 0px 20px 0px 20px;
+}
+.fixBoxSearch{
+	display: grid;
+	z-index: 10;
+}
+.eventListInfo{
+	margin: 10px 20px 0px 20px;
+  font-size: 15px;
+	font-weight: 300;
+  text-align: center;
+}
+.inputSearchBox{
+	display: flex;
+	margin: 20px auto;
+	width: 60%;
+	box-shadow: 0px 2px 29px -18px #000000ab;
+}
+.inputSearchBox input{
+	border: 1px solid #0ba69d;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 5px;
+	width: 100%;
+	padding-right: 35px;
+	height: 30px;
+	outline: none;
+	padding-left: 15px;
+	font-size: 16px;
+}
+.inputSearchBox input:active{
+	border: 1px solid #0ba69d;
+}
+.searchIcon svg{
+	width: 2.5rem;
+	height: 2rem;
+	color: white;
+}
+.searchIcon{
+  display: flex;
+	margin-left: -5px;
+  align-items: center;
+  background: #0ba69d;
+	cursor: pointer;
+}
+.searchIcon:hover{
+  background: #0e8882;
+}
+.searchIcon:active{
+  background: #095955;
+}
+.searchDiv{
+	display: block;
+	justify-content: center;
+	align-items: center;
+}
+.sortBy{
+	align-items: center;
+	display: block;
+	background: none;
+	margin: 0 auto;
+	/* border-radius: 50%; */
+	border: none;
+	/* height: 50px; */
+	/* width: 50px; */
+	/* cursor: pointer; */
+}
+.sortBy:hover{
+	/* background: whitesmoke; */
+}
+.sortBy:active{
+	/* background: #d9d9d9; */
+}
+.contentEventList{
+	margin: 300px auto 0px auto;
+	width: 60%;
+	background: whitesmoke;
+	padding: 25px;
+}
+.sortByPayment {
+    display: flex;
+    justify-content: center;
+}
+.eventListCard .price{
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+}
+.eventListCard .elcDescription {
+	margin: 0px 0px 50px 0px;
+}
+.labelInputSpanDiv {
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+.eventList .select {
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 10px 25px;
+	color: blueviolet;
+	box-shadow: 1px 1px 5px #59716d8a;
+	cursor: pointer;
+	border: solid 2px blueviolet;
+	width: 130px;
+	margin: 5px 10px;
+}
+.showAll, .paying, .gratis {
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 10px 25px;
+	color: #858585;
+	box-shadow: 1px 1px 5px #59716d8a;
+	cursor: pointer;
+	border: solid 2px #858585;
+	width: 100px;
+	margin: 5px 10px;
+}
+.sortByPayment button:active{
+	background: #f9f9f9;
+}
+.inputSearchBox form {
+	width: 90%;
+	margin: 0 50px 0 0;
+}
+/********** RESPONSIVE **********/
+@media screen and (max-width: 1300px) {
+	.contentEventList{
+		width: 80%;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.contentEventList{
+		width: 90%;
+		/* margin: 300px auto 0px auto; */
+	}
+	/* .searchDiv {
+    display: block;
+} */
+}
+@media screen and (max-width: 800px) {
+	.contentEventList{
+		margin: 250px auto 0px auto;
+	}
+}
+/* <div className="sortBy">
+<span class="labelInputSpan">Evenement : </span>
+<div class="payment">
+	<button class="paying select">payant</button>
+	<button class="gratis">gratuit</button>
+</div>
+</div> */

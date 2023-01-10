@@ -1,0 +1,86 @@
+.eventListCard{
+	border: 2px solid #dedbdb;
+	border-radius: 10px;
+	padding: 0px 10px 10px 10px;
+	margin-bottom: 30px;
+	box-shadow: 0px 2px 25px -18px #000000ab;
+	display: grid;
+	min-height: 160px;
+	background: #f5f5f5;
+	transition: background 100ms;
+	/* cursor: pointer; */
+	position: relative;
+}
+.eventListCard:hover{
+	background: #f9f9f9;
+}
+.elcTitle{
+	text-align: center;
+	/* height: 40px; */
+	/* margin: -20px 0px 0px 0px; */
+}
+.elcButton{
+	display: flex;
+	direction: rtl;
+	align-items: flex-end;
+	/* position: absolute; */
+	bottom: 10px;
+	right: 10px;
+}
+.ecb{
+	width: 100px;
+	color: green;
+	border: solid 2px green;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 5px #59716d8a;
+  cursor: pointer;
+	transition: border 100ms;
+	height: min-content;
+	text-align: center;
+	margin-left: 15px;
+	background: none;
+	font-size: 20px;
+}
+.ecb:disabled{
+  cursor: default;
+	box-shadow: 0px 0px 0px #59716d8a;
+}
+.ecb:hover{
+  box-shadow: 1px 1px 25px -10px #0000007a;
+	border: solid 2px green;
+}
+.buyButton{
+	width: 160px;
+	color: green;
+	border: solid 2px green;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.eventListCard .price .colorElement {
+	font-size: 2rem;
+	font-weight: bold;
+	color: blueviolet;
+}
+/* .buyButton:hover{
+	border: solid 3px green;
+} */
+.infoButton{
+	color: green;
+	border: solid 2px green;
+	text-decoration: none;
+	width: 160px;
+}
+/* .infoButton:hover{
+	border: solid 3px green;
+} */
+.bought{
+	color: white;
+	background: green;
+  width: 160px;
+}
+.participer{
+	width: 160px;
+}

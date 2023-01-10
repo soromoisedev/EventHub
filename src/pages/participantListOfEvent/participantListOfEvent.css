@@ -1,0 +1,117 @@
+.eventDetailParticipanList{
+	background: whitesmoke;
+	width: 80%;
+	min-width: 400px;
+	border-radius: 15px 15px 10px 10px;
+	border: solid 1px blueviolet;
+	/* position: absolute; */
+	transition: 100ms;
+	/* top: 25vh;
+	left: 10%; */
+	margin: 20px auto;
+	min-height: 200px;
+	box-shadow: 1px 1px 3px #59716d8a;
+}
+.eventDetailParticipanList .title{
+	font-size: 1.5rem;
+	color: blueviolet;
+	text-align: center;
+	margin-top: 10px;
+	border-bottom: none;
+	background: none;
+}
+.eventDetailParticipanList .buyButton{
+	width: 120px;
+	color: green;
+	border: solid 2px green;
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 10px 25px;
+	box-shadow: 1px 1px 5px #59716d8a;
+	cursor: pointer;
+	transition: border 100ms;
+	height: min-content;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.eventDetailParticipanList .buyButton:hover{
+	box-shadow: 2px 2px 10px #6a8c86;
+	border: solid 3px green;
+}
+.button {
+	height: min-content;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+.descriptionParticipanList {
+	height: 75%;
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+	margin: 40px 20px 40px 20px;
+}
+.frexLineParticipanList{
+	display: flex;
+	justify-content: space-around;
+	/* position: absolute; */
+	/* bottom: 80px; */
+	margin: 0 0 30px 0;
+	width: 100%;
+}
+.eventDetailParticipanList .colorElement{
+	color: blueviolet;
+	font-weight: bold;
+}
+.priceParticipanList{
+	margin: 10px 20px;
+	font-size: 1.5rem;
+}
+.priceParticipanList .colorElement{
+	font-size: 2rem;
+}
+.userByList {
+    margin: 30px auto;
+    width: 90%;
+}
+.user {
+	margin: 15px 0px;
+	background: whitesmoke;
+	padding: 20px;
+	border-radius: 15px;
+}
+.user:hover{
+	background: #dadada;
+}
+.return{
+	margin: 20px 0 0 20px;
+	width: 130px;
+	text-decoration: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.username {
+	text-align: center;
+	font-size: 1.1rem;
+	color: blue;
+	padding: 10px;
+}
+.address{
+	display: flex;
+	font-size: 1.0rem;
+	font-size: 1.0rem;
+	justify-content: space-between;
+}
+.address .phoneNumber{
+
+}
+.address .email{
+
+}
+.user .colorElement{
+	font-weight: bold;
+	color: blueviolet;
+}
