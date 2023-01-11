@@ -28,7 +28,7 @@
 	right: 10px;
 }
 .ecb{
-	width: 100px;
+	width: auto;
 	color: green;
 	border: solid 2px green;
   font-weight: bold;

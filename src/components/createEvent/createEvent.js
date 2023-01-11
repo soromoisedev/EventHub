@@ -12,7 +12,7 @@ function CreateEvent({ setWantCreateTask }) {
 	const [nbrPlace, setNbrPlace] = React.useState(0)
 	const [eventPrice, setEventPrice] = React.useState(0)
 	const [location, setLocation] = React.useState("")
-	const [status, setStatus] = React.useState(false)
+	const [status, setStatus] = React.useState(true)
 	const labelErrorRef = React.useRef()
 	const descriptionlErrorRef = React.useRef()
 	const dateErrorRef = React.useRef()
@@ -42,14 +42,14 @@ function CreateEvent({ setWantCreateTask }) {
 		e.preventDefault()
 		payingButton.current.classList.add("select")
 		gratisButton.current.classList.remove("select")
-		setStatus(false)
+		setStatus(true)
 		eventPriceRef.current.disabled = false
 	}
 	function handleGratis(e) {
 		e.preventDefault()
 		payingButton.current.classList.remove("select")
 		gratisButton.current.classList.add("select")
-		setStatus(true)
+		setStatus(false)
 		eventPriceRef.current.disabled = true
 	}
 	function handleNbrPlace(e) {
@@ -104,7 +104,7 @@ function CreateEvent({ setWantCreateTask }) {
 				description: description,
 				location: location,
 				date: date,
-				price: !status ? eventPrice : 0,
+				price: status ? eventPrice : 0,
 				nbPlace: nbrPlace,
 				status: status,
 			})

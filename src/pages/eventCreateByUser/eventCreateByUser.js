@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Axios from '../../utils';
 // import { MdAdd, MdEdit } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,6 +12,7 @@ function EventCreateByUser({ wantCreateTask }) {
 	// Liste des evenement crée par un organisateur
 	const dispatch = useDispatch()
 	const userEventList = useSelector(state => state.userEventList)
+	const [update, setUpdate] = useState(false);
 
 	function handleAllUser(id) {
 		// console.log("le handle")
@@ -31,12 +32,12 @@ function EventCreateByUser({ wantCreateTask }) {
 				console.log("les datas recu sont : ", data);
 				dispatch(setUserEvent(response.data))
 			})
-	}, [wantCreateTask])
+	}, [wantCreateTask, update])
 	return (
 		<>
 			{userEventList.length > 0 ?
 				<div className="userEventList">
-					<div className="title">Liste des evennements que vous avez publié</div>
+					<div className="title">Liste des evennements que vous avez crée</div>
 					<div className='elcButton allUser'>  {/* event card button : ecb */}
 						{/* <button className="ecb listAllUserParticipate" onClick={handleAllUser} >liste des participants à tout les évenements</button> */}
 					</div>
@@ -47,14 +48,17 @@ function EventCreateByUser({ wantCreateTask }) {
 									title={event.title}
 									description={event.description}
 									state={event.status}
+									isPublished={event.isPublished}
 									handleAllUser={handleAllUser}
+									setUpdate={setUpdate}
+									update={update}
 								/>
 							</div>
 						))}
 					</div>
 				</div> :
 				<div className="EmptyList">
-					Aucun evenement publié pour le moment
+					Aucun evenement crée pour le moment
 				</div>}
 		</>
 	);

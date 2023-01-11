@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { MdChevronLeft } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 import Axios from '../../utils';
@@ -17,8 +17,8 @@ function ParticipantListOfEvent() {
 	const [location, setLocation] = useState("");
 	const [price, setPrice] = useState("");
 	const [nbPlace, setNbPlace] = useState(0);
-	const [eventDate, setEventDate] = useState("");
-	const [eventHour, setEventHour] = useState("");
+	// const [eventDate, setEventDate] = useState("");
+	// const [eventHour, setEventHour] = useState("");
 	// const { title,
 	// 	description,
 	// 	date,
@@ -41,8 +41,8 @@ function ParticipantListOfEvent() {
 				setLocation(thisEvent.location)
 				setPrice(thisEvent.price)
 				setNbPlace(thisEvent.nbPlace)
-				setEventDate(date.split("T")[0])
-				setEventHour(date.split("T")[1])
+				// setEventDate(date.split("T")[0])
+				// setEventHour(date.split("T")[1])
 			}).catch(err => {
 				console.log("l'erreur de get all event est : ", err)
 			})
