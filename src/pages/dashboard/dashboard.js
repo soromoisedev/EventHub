@@ -41,8 +41,8 @@ function Dashboard() {
 						<>
 							<div className="DTitle"><span style={{ fontStyle: "italic" }} >Dashboard de </span>{localStorage.getItem('username').toUpperCase()} </div>
 							<div className="topButtons">
-								<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos information personnels <MdEdit size={25} /> </button>
-								{localStorage.getItem("role") === "organizer" && <button className="ecb createNewEvent  bashTopButton" onClick={handleCreateTask} > Publier un nouveau evenement <MdAdd size={25} /> </button>}
+								<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos informations personnelles <MdEdit size={25} /> </button>
+								{localStorage.getItem("role") === "organizer" && <button className="ecb createNewEvent  bashTopButton" onClick={handleCreateTask} > Créer un nouvel évènement <MdAdd size={25} /> </button>}
 								{/* {localStorage.getItem("role") === "organizer" && dashHome && <Link to={"/dashboard/eventParticipate"} className="ecb createNewEvent dashTopButton" onClick={handleChangePageInDash} > Liste des evenements pour lesquels vous avez pris un ticket </Link>} */}
 								{localStorage.getItem("role") === "organizer" && !dashHome && <Link to={"/dashboard/"} className="ecb createNewEvent dashTopButton" onClick={handleChangePageInDash} > Liste des evenements publié </Link>}
 							</div>
