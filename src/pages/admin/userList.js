@@ -6,7 +6,7 @@ function UserList() {
 	const [update, setUpdate] = useState(false);
 	useEffect(() => {
 		try {
-			Axios.get("/users/get-desactivated-user")
+			Axios.get("/users/get-all-users")
 				.then(response => {
 					// console.log("la reponse est : ", response.data)
 					setUserList(response.data)
@@ -20,7 +20,7 @@ function UserList() {
 	}, [update]);
 
 	function desactivateUser(id) {
-		// console.log("l'id dans desactivate : ", id);
+		console.log("l'id dans desactivate : ", id);
 		try {
 			// Axios.delete(`/users/desactivate-user/${id}`)
 			Axios.get(`/users/restore-user/${id}`)
@@ -34,7 +34,9 @@ function UserList() {
 			console.log("l'erreur de desactivation est : ", error);
 		}
 	}
-
+	// desactivateUser(4)
+	// desactivateUser(9)
+	// desactivateUser(7)
 	// desactivateUser(2)
 
 	return (

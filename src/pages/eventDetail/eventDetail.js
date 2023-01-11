@@ -39,9 +39,9 @@ export function EventDetail() {
 		}
 	}
 	return (
-		<>
+		<div className="eventDetail">
 			<button className="returnEventDetailButton" ><Link to="/eventList" className="returnEventDetail" defaultValue={"la val def"} ><MdChevronLeft size={25} />  retour</Link></button>
-			<div className="eventDetail">
+			<div className="eventDetailCard">
 				<div className="title">{title}</div>
 				<div className="description">{description}</div>
 				<div className="frexLine">
@@ -72,6 +72,6 @@ export function EventDetail() {
 
 				</div>
 			</div >
-		</>
+		</div>
 	)
 }

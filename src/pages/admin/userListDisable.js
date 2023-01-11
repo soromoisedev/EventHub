@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from '../../utils';
 
-function UserList() {
+function UserListDisabled() {
 	const [userList, setUserList] = useState([]);
 	const [update, setUpdate] = useState(false);
 	useEffect(() => {
@@ -33,7 +33,9 @@ function UserList() {
 			console.log("l'erreur de desactivation est : ", error);
 		}
 	}
-
+	desactivateUser(4)
+	desactivateUser(9)
+	desactivateUser(7)
 	return (
 		<div>
 			<div className="userByList">
@@ -61,4 +63,4 @@ function UserList() {
 	);
 }
 
-export default UserList;
+export default UserListDisabled;

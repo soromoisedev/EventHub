@@ -19,8 +19,8 @@ function EventCreateByUser({ wantCreateTask }) {
 		Axios.get(`/participation/get-event-participants/${id}`)
 			.then((response) => {
 				const data = response.data
-				// console.log("les datas recu sont : ", data);
-				// console.log(response.data)
+				console.log("les datas recu sont : ", data);
+				console.log(response)
 			})
 	}
 	React.useEffect(() => {

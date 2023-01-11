@@ -10,23 +10,54 @@ import "./participantListOfEvent.css"
 function ParticipantListOfEvent() {
 	const { id } = useParams()
 	// console.log("le tout est : ", useSelector(state => state.eventList), "l'id est : ", id);
-	const { title,
-		description,
-		date,
-		status,
-		location,
-		price,
-		nbPlace } = useSelector(state => state.eventList)?.filter(el => el["id"] === Number(id))[0]
-	let [eventDate, eventHour] = date.split("T")
-	const [participant, setParticipant] = useState([{}])
+	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [date, setDate] = useState("");
+	const [status, setStatus] = useState(false);
+	const [location, setLocation] = useState("");
+	const [price, setPrice] = useState("");
+	const [nbPlace, setNbPlace] = useState(0);
+	const [eventDate, setEventDate] = useState("");
+	const [eventHour, setEventHour] = useState("");
+	// const { title,
+	// 	description,
+	// 	date,
+	// 	status,
+	// 	location,
+	// 	price,
+	// 	nbPlace } = useSelector(state => state.eventList)?.filter(el => el["id"] === Number(id))[0]
+	// let [eventDate, eventHour] = date.split("T")
+	const [participant, setParticipant] = useState([])
 	useEffect(() => {
+		Axios.get("/events/get-all-events")
+			.then(res => {
+				console.log("la reponse est : ", res.data.filter(el => el["id"] === Number(id))[0], "l'id de la page : ", id)
+				const thisEvent = res.data.filter(el => el["id"] === Number(id))[0]
+				setTitle(thisEvent.title)
+				setDescription(thisEvent.description)
+				setDate(thisEvent.date)
+				setStatus(thisEvent.status)
+				setLocation(thisEvent.location)
+				setPrice(thisEvent.price)
+				setNbPlace(thisEvent.nbPlace)
+				setEventDate(date.split("T")[0])
+				setEventHour(date.split("T")[1])
+			})
 		Axios.get(`/participation/get-event-participants/${id}`)
 			.then((response) => {
 				// const data = response.data
-				// console.log("les datas recu sont : ", response.data);
-				// console.log(response.data)
+				console.log("les datas recu sont : ", response.data);
+				console.log("participan event : ", response)
 				setParticipant(response.data)
 			})
+		// const { title,
+		// 	description,
+		// 	date,
+		// 	status,
+		// 	location,
+		// 	price,
+		// 	nbPlace } = {}
+		// let [eventDate, eventHour] = date.split("T")
 	}, [])
 	return (
 		<div className="participantListOfEvent">
@@ -58,23 +89,25 @@ function ParticipantListOfEvent() {
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}
 			</div>
-			{participant.length === 0 ? <div className="userByList">
-				{participant.map((element, index) => (
-					<>
-						<div className="user" key={index}>
-							<div className="username">{element?.user?.username} </div>
-							<div className="address">
-								<div className="email">Email : <span className="colorElement"> {element?.user?.email}</span></div>
-								<div className="phoneNumber">Contact : <span className="colorElement"> {element?.user?.contacts}</span></div>
-							</div>
-						</div>
-					</>
-				))}
+			{/* {console.log("la longueur est : ", participant[0].user, participant.length)} */}
+			{participant.length !== 0 &&
+				<div className="userByList">
+					{participant?.map((element, index) => (
+
+						<>
+							{element.user && <div className="user" key={index}>
+								<div className="username">{element?.user?.username} </div>
+								<div className="address">
+									<div className="email">Email : <span className="colorElement"> {element?.user?.email}</span></div>
+									<div className="phoneNumber">Contact : <span className="colorElement"> {element?.user?.contacts}</span></div>
+								</div>
+							</div>}
+						</>
+					))}
+				</div>}
+			{!participant && <div className="emptyUser">
+				Aucun utilisateur n'as souscrit à ce evenement
 			</div>
-				:
-				<div className="emptyUser">
-					Aucun utilisateur n'as souscrit à ce evenement
-				</div>
 			}
 		</div>
 	);
