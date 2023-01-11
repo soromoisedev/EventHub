@@ -7,12 +7,9 @@
 	min-width: 400px;
 	border-radius: 15px 15px 10px 10px;
 	border: solid 1px blueviolet;
-	/* position: absolute;
-	transition: 100ms;
-	top: 25vh;
-	left: 10%; */
 	min-height: 200px;
-	margin-bottom: 50px;
+	margin: 0 auto;
+	/* margin-bottom: 50px; */
 }
 .eventDetailCard .title{
 	font-size: 1.5rem;
@@ -48,17 +45,14 @@
 }
 .description {
 	height: 75%;
-	display: flex;
+	/* display: flex; */
 	align-items: center;
 	font-size: 1.2rem;
-	margin: 40px 20px 120px 20px;
+	margin: 40px 20px 40px 20px;
 }
 .frexLine{
 	display: flex;
 	justify-content: space-around;
-	position: absolute;
-	bottom: 80px;
-	width: 100%;
 }
 .date {
 	/* position: absolute;
@@ -77,16 +71,14 @@
 	font-weight: bold;
 }
 .price{
-	position: absolute;
-	bottom: 20px;
-	left: 30px;
 	font-size: 1.5rem;
+	/* margin: 10px 0 0 20px; */
 }
 .price .colorElement{
 	font-size: 2rem;
 }
 .returnEventDetailButton {
-	margin: 0px;
+	margin: 60px 10px;
 	width: 160px;
 	height: 50px;
 	color: blueviolet;
@@ -117,6 +109,12 @@
 .returnEventDetail:hover{
 	color: blueviolet;
 	border-color: blueviolet;
+}
+.buttonEventDetail{
+	display: flex;
+	justify-content: end;
+	height: min-content;
+	margin: 0 10px 10px 0;
 }
 
 

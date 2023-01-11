@@ -27,8 +27,8 @@ function EventCreateByUser({ wantCreateTask }) {
 		// console.log("la repone est ", Axios.get("/events").then((response) => { return response.data }))
 		Axios.get("/events/get-organizer-events")
 			.then((response) => {
-				// const data = response.data
-				// console.log("les datas recu sont : ", data);
+				const data = response.data
+				console.log("les datas recu sont : ", data);
 				dispatch(setUserEvent(response.data))
 			})
 	}, [wantCreateTask])

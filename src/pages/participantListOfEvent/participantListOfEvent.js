@@ -36,12 +36,15 @@ function ParticipantListOfEvent() {
 				setTitle(thisEvent.title)
 				setDescription(thisEvent.description)
 				setDate(thisEvent.date)
+				console.log("la date : ", date);
 				setStatus(thisEvent.status)
 				setLocation(thisEvent.location)
 				setPrice(thisEvent.price)
 				setNbPlace(thisEvent.nbPlace)
 				setEventDate(date.split("T")[0])
 				setEventHour(date.split("T")[1])
+			}).catch(err => {
+				console.log("l'erreur de get all event est : ", err)
 			})
 		Axios.get(`/participation/get-event-participants/${id}`)
 			.then((response) => {
@@ -49,15 +52,9 @@ function ParticipantListOfEvent() {
 				console.log("les datas recu sont : ", response.data);
 				console.log("participan event : ", response)
 				setParticipant(response.data)
+			}).catch(err => {
+				console.log("l'erreur de get-event-participants est : ", err)
 			})
-		// const { title,
-		// 	description,
-		// 	date,
-		// 	status,
-		// 	location,
-		// 	price,
-		// 	nbPlace } = {}
-		// let [eventDate, eventHour] = date.split("T")
 	}, [])
 	return (
 		<div className="participantListOfEvent">
@@ -75,9 +72,9 @@ function ParticipantListOfEvent() {
 						<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
 							Date :
 						</span>
-						<span className="colorElement" >{eventDate}</span>
+						<span className="colorElement" >{date.split("T")[0]}</span>
 						<span style={{ fontStyle: "italic", fontWeight: "normal" }} >à </span>
-						<span className="colorElement" >{eventHour}</span>
+						<span className="colorElement" >{date.split("T")[1]}</span>
 					</div>
 					<div className="nbPlace">
 						<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
@@ -89,11 +86,10 @@ function ParticipantListOfEvent() {
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}
 			</div>
-			{/* {console.log("la longueur est : ", participant[0].user, participant.length)} */}
+			{console.log("la longueur est : ", participant)}
 			{participant.length !== 0 &&
 				<div className="userByList">
 					{participant?.map((element, index) => (
-
 						<>
 							{element.user && <div className="user" key={index}>
 								<div className="username">{element?.user?.username} </div>
@@ -105,7 +101,7 @@ function ParticipantListOfEvent() {
 						</>
 					))}
 				</div>}
-			{!participant && <div className="emptyUser">
+			{participant.length !== 0 || <div className="emptyUser">
 				Aucun utilisateur n'as souscrit à ce evenement
 			</div>
 			}

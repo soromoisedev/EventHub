@@ -128,7 +128,7 @@ function EventList() {
 						<EventListCard id={event.id}
 							title={event.title}
 							description={event.description}
-							state={event.status}
+							status={event.status}
 							price={event.price}
 						/>
 					</div>

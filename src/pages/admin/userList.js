@@ -4,11 +4,15 @@ import Axios from '../../utils';
 function UserList() {
 	const [userList, setUserList] = useState([]);
 	const [update, setUpdate] = useState(false);
+	const [confirm, setConfirm] = useState(false);
+	const [idAction, setidAction] = useState(null);
+	const [activate, setActivate] = useState(false);
+
 	useEffect(() => {
 		try {
 			Axios.get("/users/get-all-users")
 				.then(response => {
-					// console.log("la reponse est : ", response.data)
+					console.log("la reponse est : ", response.data)
 					setUserList(response.data)
 				})
 		} catch (error) {
@@ -20,25 +24,56 @@ function UserList() {
 	}, [update]);
 
 	function desactivateUser(id) {
-		console.log("l'id dans desactivate : ", id);
+		localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
+		setidAction(id)
+		setConfirm(!confirm)
+		// console.log("l'id dans desactivate : ", idAction);
+		// try {
+		// 	Axios.delete(`/users/desactivate-user/${idAction}`)
+		// 		.then(response => {
+		// 			if (response.status === 200) {
+		// 				localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
+		// 				setUpdate(!update)
+		// 				setConfirm(!confirm)
+		// 			}
+		// 			console.log("la reponse desactiver est  : ", response.data);
+		// 		})
+		// } catch (error) {
+		// 	console.log("l'erreur de desactivation est : ", error);
+		// }
+	}
+
+	function activateUser(id) {
+		localStorage.setItem("popupTitle", "Voulez-vous activer ce utilisateur ? ")
+		setidAction(id)
+		setConfirm(!confirm)
+	}
+	function popupConfirme() {
+		console.log("l'id dans activate : ", idAction);
+		let request
+		if (!activate) {
+			request = `/users/restore-user/${idAction}`
+		} else {
+			request = `/users/desactivate-user/${idAction}`
+		}
 		try {
-			// Axios.delete(`/users/desactivate-user/${id}`)
-			Axios.get(`/users/restore-user/${id}`)
+			Axios.get(request)
 				.then(response => {
 					if (response.status === 200) {
 						setUpdate(!update)
+						setConfirm(!confirm)
 					}
 					// console.log("la reponse des : ", response);
 				})
 		} catch (error) {
-			console.log("l'erreur de desactivation est : ", error);
+			console.log("l'erreur de activation est : ", error);
 		}
 	}
-	// desactivateUser(4)
-	// desactivateUser(9)
-	// desactivateUser(7)
-	// desactivateUser(2)
-
+	function popupCancel() {
+		localStorage.removeItem("popupTitle")
+		setidAction(null)
+		setConfirm(!confirm)
+	}
 	return (
 		<div>
 			<div className="userByList">
@@ -55,13 +90,28 @@ function UserList() {
 						<div className="roleButton">
 							<div className="role">Role : <span className="colorElement">{element?.role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
 							<div className="buttons">
-								<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
+								{!element.deletedAt ?
+									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
+									:
+									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>débloquer</button>}
 								{element?.role === "organizer" && <button className="ecb showEventList">voir ses evenement</button>}
 							</div>
 						</div>
 					</div>
 				))}
 			</div>
+			{confirm &&
+				<div className="blur">
+					<div className="confirmPopup">
+						<div className='popupHead'> Confirmer </div>
+						<div className="title">{localStorage.getItem("popupTitle")}</div>
+						<div className="popupButtons">
+							<button className="ecb activate popupConfirmButton" onClick={popupConfirme}>Confirmer</button>
+							<button className="ecb desactivate popupCancelButton" onClick={popupCancel}>Annuler</button>
+						</div>
+					</div>
+				</div>
+			}
 		</div>
 	);
 }
