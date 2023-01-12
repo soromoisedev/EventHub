@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
-import './createEvent.css'
+// import './createEvent.css'
 import { useSelector } from 'react-redux';
 import Axios from '../../utils';
 
-function CreateEvent({ setWantCreateTask }) {
+function EditEvent({ id, setEdit }) {
 	const [label, setLabel] = React.useState("")
 	const [description, setDescription] = React.useState("")
 	const [date, setDate] = React.useState("")
@@ -62,7 +62,7 @@ function CreateEvent({ setWantCreateTask }) {
 	}
 	function handleCancel(e) {
 		e.preventDefault()
-		setWantCreateTask(false)
+		setEdit(false)
 	}
 	function handleChangeLocation(event) {
 		setLocation(event.target.value)
@@ -99,7 +99,7 @@ function CreateEvent({ setWantCreateTask }) {
 			return
 		}
 		try {
-			await Axios.post("/events/create-events", {
+			await Axios.patch(`/events/update-event/${id}`, {
 				title: label,
 				description: description,
 				location: location,
@@ -107,18 +107,37 @@ function CreateEvent({ setWantCreateTask }) {
 				price: status ? eventPrice : 0,
 				nbPlace: nbrPlace,
 				status: status,
+			}).then(resp => {
+				setEdit(false)
 			})
 
 		} catch (err) {
-			console.log("L'erreur est : ", err, "le message est ", err);
+			console.log("L'erreur est : ", err);
 			return
 		}
-		setWantCreateTask(false)
 	}
+	useEffect(() => {
+		try {
+			Axios.get(`/events/get-one/${id}`)
+				.then(resp => {
+					const data = resp.data
+					setLabel(data.title)
+					setDescription(data.description)
+					setDate(data.date)
+					setLocation(data.location)
+					setEventPrice(data.price)
+					setNbrPlace(data.nbPlace)
+					setStatus(data.status)
+					console.log("la reponse est : ", resp)
+				})
+		} catch (error) {
+			console.log("Erreur de recuperation des information de l'evenement, l'erreur est : ", error)
+		}
+	}, []);
 	return (
 		<div className="createEventBox">
 			<div className='createEventHead'>
-				Création de l'evenement
+				Modification de l'evenement
 			</div>
 			<form className='createEventFrom' >
 				<div className="createEventBody">
@@ -173,4 +192,4 @@ function CreateEvent({ setWantCreateTask }) {
 	);
 }
 
-export default CreateEvent;
+export default EditEvent;
