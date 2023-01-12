@@ -5,7 +5,7 @@ import './createEvent.css'
 import { useSelector } from 'react-redux';
 import Axios from '../../utils';
 
-function CreateEvent({ setWantCreateTask }) {
+function CreateEvent({ setWantCreateTask, submitFunction }) {
 	const [label, setLabel] = React.useState("")
 	const [description, setDescription] = React.useState("")
 	const [date, setDate] = React.useState("")
@@ -87,7 +87,7 @@ function CreateEvent({ setWantCreateTask }) {
 			nbrPlaceErrorRef.current.innerHTML = "le nombre de place doit-être supperieur à 0"
 			lieldFull = false
 		}
-		if (!status && (!eventPrice || eventPrice <= 0)) {
+		if (status && (!eventPrice || eventPrice <= 0)) {
 			eventPriceErrorRef.current.innerHTML = "le prix d'un evenement payant doit-être supperieur à 0"
 			lieldFull = false
 		}
@@ -124,7 +124,7 @@ function CreateEvent({ setWantCreateTask }) {
 				<div className="createEventBody">
 					<label className="labelInput">
 						<span className="labelInputSpan" >titre</span>
-						<input className="newEventLabel" type="text" required name="label" placeholder="Enter le libélé de l'evenement ici" value={label} onChange={handleChangeLabel} />
+						<input className="newEventLabel" type="text" required name="label" placeholder="Enter le libélé de l'evenement ici" value={localStorage.getItem("inputLabel") || label} onChange={handleChangeLabel} />
 						<div ref={labelErrorRef} className='errorMessage'></div>
 					</label>
 					<label className="labelInput">
@@ -166,7 +166,7 @@ function CreateEvent({ setWantCreateTask }) {
 				</div>
 				<div className="buttonParent" >
 					<button id="saveEventButton" className='myButton aSubmitButton CloseButton' onClick={handleCancel} >Annuler</button>
-					<button id="saveEventButton" className='myButton aSubmitButton validateButton' onClick={handleSubmit} > Publier </button>
+					<button id="saveEventButton" className='myButton aSubmitButton validateButton' onClick={submitFunction || handleSubmit} > Enregister </button>
 				</div>
 			</form>
 		</div>

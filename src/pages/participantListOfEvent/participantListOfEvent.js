@@ -7,7 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import Axios from '../../utils';
 import "./participantListOfEvent.css"
 
-function ParticipantListOfEvent() {
+function ParticipantListOfEvent({ set }) {
 	const { id } = useParams()
 	// console.log("le tout est : ", useSelector(state => state.eventList), "l'id est : ", id);
 	const [title, setTitle] = useState("");

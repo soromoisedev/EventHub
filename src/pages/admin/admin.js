@@ -27,29 +27,31 @@ function Admin() {
 	return (
 		<div className="adminDash">
 			{!useSelector(state => state.user.username) && <Redirect to={"/eventList"} />}
-			<Router>
-				<>
-					<div className="DTitle"><span style={{ fontStyle: "italic" }} >Dashboard de </span>{localStorage.getItem('username').toUpperCase()} </div>
-					<div className="topButtons">
-						<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos information personnels <MdEdit size={25} /> </button>
-						{/* <button ref={userButton} className="ecb createNewEvent dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs <MdAdd size={25} /> </button> */}
-						<Link ref={userButton} to={"/dashboard"} className="ecb dashTopButton dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs </Link>
-						<Link ref={orgButton} to={"/dashboard/user-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des utilisateur désactivé</Link>
-						{/* {<Link to={"/dashboard/"} className="ecb createNewEvent dashTopButton" onClick={"handleChangePageInDash"} > Liste des evenements publié </Link>} */}
-					</div>
-				</>
-				<>
-					<Switch>
-						<Route exact path={"/dashboard"}>
-							<UserList />
-						</Route>
-						<Route exact path={"/dashboard/user-disable"}>
-							<UserListDisabled />
-						</Route>
-					</Switch>
-				</>
-				{wantEditUser && <div className="blur"><EditUser setWantEditUser={setWantEditUser} /></div>}
-			</Router>
+			{localStorage.getItem("username") &&
+				<Router>
+					<>
+						<div className="DTitle"><span style={{ fontStyle: "italic" }} >Dashboard de </span>{localStorage.getItem('username').toUpperCase()} </div>
+						<div className="topButtons">
+							<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos information personnels <MdEdit size={25} /> </button>
+							{/* <button ref={userButton} className="ecb createNewEvent dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs <MdAdd size={25} /> </button> */}
+							<Link ref={userButton} to={"/dashboard"} className="ecb dashTopButton dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs </Link>
+							<Link ref={orgButton} to={"/dashboard/user-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des utilisateur désactivé</Link>
+							{/* {<Link to={"/dashboard/"} className="ecb createNewEvent dashTopButton" onClick={"handleChangePageInDash"} > Liste des evenements publié </Link>} */}
+						</div>
+					</>
+					<>
+						<Switch>
+							<Route exact path={"/dashboard"}>
+								<UserList />
+							</Route>
+							<Route exact path={"/dashboard/user-disable"}>
+								<UserListDisabled />
+							</Route>
+						</Switch>
+					</>
+					{wantEditUser && <div className="blur"><EditUser setWantEditUser={setWantEditUser} /></div>}
+				</Router>
+			}
 		</div>
 	);
 }

@@ -1,0 +1,54 @@
+.confirmPopup{
+	width: 50%;
+	min-width: 600px;
+	max-width: 900px;
+	height: 250px;
+	padding: 10px 0px;
+	text-align: center;
+	color: white;
+	background: white;
+	border-radius: 30px;
+	font-size: 1.3rem;
+	font-weight: bold;
+	letter-spacing: 3px;
+	margin: 0 auto;
+	border: solid 2px blueviolet;
+	position: relative;
+}
+.popupHead{
+	padding: 10px 0px;
+	text-align: center;
+	color: white;
+	background: #8a2be2d4;
+	border-radius: 29px 29px 0px 0px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: 3px;
+	margin: -2px;
+	border-bottom: solid 2px blueviolet;
+	margin-top: -10px;
+}
+.popupButtons {
+	display: flex;
+	justify-content: space-around;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	margin: 0 0 10px 0;
+}
+.popupButtons button {
+	width: auto;
+}
+.popupButtons button:active {
+	background: white;
+	width: auto;
+}
+.titlePopup {
+	color: black;
+	font-size: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* margin: 0px 0 0 0; */
+	height: 60%;
+}

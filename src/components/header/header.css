@@ -44,6 +44,7 @@ img.logoimg {
 	display: flex;
 	align-items: center;
 	top: 0px;
+	left: 0px;
 	z-index: 11;
 }
 .iconAuthClose{

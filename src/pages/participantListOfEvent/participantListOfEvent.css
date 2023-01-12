@@ -112,3 +112,8 @@
 	font-weight: bold;
 	color: blueviolet;
 }
+.emptyUser {
+	font-size: 2rem;
+	text-align: center;
+	padding: 25px;
+}

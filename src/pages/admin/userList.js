@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Popup from '../../components/popup/Popup';
 import Axios from '../../utils';
 
 function UserList() {
@@ -6,7 +7,7 @@ function UserList() {
 	const [update, setUpdate] = useState(false);
 	const [confirm, setConfirm] = useState(false);
 	const [idAction, setidAction] = useState(null);
-	const [activate, setActivate] = useState(false);
+	const [activate, setActivate] = useState(true);
 
 	useEffect(() => {
 		try {
@@ -24,34 +25,22 @@ function UserList() {
 	}, [update]);
 
 	function desactivateUser(id) {
-		localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
+		// localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
+		setActivate(false)
 		setidAction(id)
 		setConfirm(!confirm)
-		// console.log("l'id dans desactivate : ", idAction);
-		// try {
-		// 	Axios.delete(`/users/desactivate-user/${idAction}`)
-		// 		.then(response => {
-		// 			if (response.status === 200) {
-		// 				localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
-		// 				setUpdate(!update)
-		// 				setConfirm(!confirm)
-		// 			}
-		// 			console.log("la reponse desactiver est  : ", response.data);
-		// 		})
-		// } catch (error) {
-		// 	console.log("l'erreur de desactivation est : ", error);
-		// }
 	}
 
 	function activateUser(id) {
-		localStorage.setItem("popupTitle", "Voulez-vous activer ce utilisateur ? ")
+		// localStorage.setItem("popupTitle", "Voulez-vous activer ce utilisateur ? ")
+		setActivate(true)
 		setidAction(id)
 		setConfirm(!confirm)
 	}
 	function popupConfirme() {
 		console.log("l'id dans activate : ", idAction);
 		let request
-		if (!activate) {
+		if (activate) {
 			request = `/users/restore-user/${idAction}`
 		} else {
 			request = `/users/desactivate-user/${idAction}`
@@ -70,7 +59,7 @@ function UserList() {
 		}
 	}
 	function popupCancel() {
-		localStorage.removeItem("popupTitle")
+		// localStorage.removeItem("popupTitle")
 		setidAction(null)
 		setConfirm(!confirm)
 	}
@@ -101,16 +90,14 @@ function UserList() {
 				))}
 			</div>
 			{confirm &&
-				<div className="blur">
-					<div className="confirmPopup">
-						<div className='popupHead'> Confirmer </div>
-						<div className="title">{localStorage.getItem("popupTitle")}</div>
-						<div className="popupButtons">
-							<button className="ecb activate popupConfirmButton" onClick={popupConfirme}>Confirmer</button>
-							<button className="ecb desactivate popupCancelButton" onClick={popupCancel}>Annuler</button>
-						</div>
-					</div>
-				</div>
+				<Popup
+					title={"Confirmer"}
+					description={activate ? "Voulez-vous désactiver ce utilisateur ?" : "Voulez-vous réactiver ce utilisateur ?"}
+					confirmText="Confirmer"
+					cancelText="Annuler"
+					confirmFunction={popupConfirme}
+					cancelFunction={popupCancel}
+				/>
 			}
 		</div>
 	);
