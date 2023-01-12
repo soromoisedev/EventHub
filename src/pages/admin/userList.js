@@ -63,6 +63,13 @@ function UserList() {
 		setidAction(null)
 		setConfirm(!confirm)
 	}
+	function orgEventList(id) {
+		console.log("orgEventList : ", id);
+		Axios.get(`/events/get-event-by-admin/${id}`)
+			.then(resp => {
+				console.log("la reponse est : ", resp);
+			})
+	}
 	return (
 		<div>
 			<div className="userByList">
@@ -83,7 +90,7 @@ function UserList() {
 									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
 									:
 									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>débloquer</button>}
-								{element?.role === "organizer" && <button className="ecb showEventList">voir ses evenement</button>}
+								{element?.role === "organizer" && <button className="ecb showEventList" onClick={() => orgEventList(element.id)} >voir ses evenement</button>}
 							</div>
 						</div>
 					</div>
@@ -92,7 +99,7 @@ function UserList() {
 			{confirm &&
 				<Popup
 					title={"Confirmer"}
-					description={activate ? "Voulez-vous désactiver ce utilisateur ?" : "Voulez-vous réactiver ce utilisateur ?"}
+					description={!activate ? "Voulez-vous désactiver ce utilisateur ?" : "Voulez-vous réactiver ce utilisateur ?"}
 					confirmText="Confirmer"
 					cancelText="Annuler"
 					confirmFunction={popupConfirme}

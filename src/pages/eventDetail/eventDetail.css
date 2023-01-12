@@ -66,13 +66,13 @@
 	left: 20px; */
 	/* font-weight: bold; */
 }
-.eventDetailCard .colorElement{
+.colorElement{
 	color: blueviolet;
 	font-weight: bold;
 }
 .price{
 	font-size: 1.5rem;
-	/* margin: 10px 0 0 20px; */
+	margin: 10px 0 0 20px;
 }
 .price .colorElement{
 	font-size: 2rem;

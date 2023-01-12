@@ -52,6 +52,10 @@ function EventCreateByUser({ wantCreateTask }) {
 									handleAllUser={handleAllUser}
 									setUpdate={setUpdate}
 									update={update}
+									date={event.date}
+									location={event.location}
+									nbPlace={event.nbPlace}
+									price={event.price}
 								/>
 							</div>
 						))}

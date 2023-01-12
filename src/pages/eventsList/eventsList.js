@@ -49,7 +49,7 @@ function EventList() {
 		Axios.get(request)
 			.then((response) => {
 				// setData(response.data)
-				// console.log("les datas recu sont : ", response.data);
+				console.log("les datas recu sont : ", response.data);
 				dispatch(setEvent(response.data))
 			})
 	}, [data])
@@ -130,6 +130,8 @@ function EventList() {
 							description={event.description}
 							status={event.status}
 							price={event.price}
+							data={data}
+							setData={setData}
 						/>
 					</div>
 				)) : <h1>je pass dans events list</h1>}

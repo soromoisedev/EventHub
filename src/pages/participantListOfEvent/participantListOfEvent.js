@@ -91,13 +91,14 @@ function ParticipantListOfEvent({ set }) {
 				<div className="userByList">
 					{participant?.map((element, index) => (
 						<>
-							{element.user && <div className="user" key={index}>
-								<div className="username">{element?.user?.username} </div>
-								<div className="address">
-									<div className="email">Email : <span className="colorElement"> {element?.user?.email}</span></div>
-									<div className="phoneNumber">Contact : <span className="colorElement"> {element?.user?.contacts}</span></div>
-								</div>
-							</div>}
+							{element.user &&
+								<div className="user" key={index}>
+									<div className="username">{element?.user?.username} </div>
+									<div className="address">
+										<div className="email">Email : <span className="colorElement"> {element?.user?.email}</span></div>
+										<div className="phoneNumber">Contact : <span className="colorElement"> {element?.user?.contacts}</span></div>
+									</div>
+								</div>}
 						</>
 					))}
 				</div>}

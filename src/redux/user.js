@@ -16,6 +16,7 @@ export const userSlice = createSlice({
 		wantsignup: false,
 		username: "",
 		initialName: "",
+		role: "",
 		token: "",
 	}],
 	reducers: {
@@ -44,6 +45,12 @@ export const userSlice = createSlice({
 				initialName: getInitialName(action.payload)
 			}
 		},
+		setRole: (state, action) => {
+			return {
+				...state,
+				role: action.payload
+			}
+		},
 		setToken: (state, action) => {
 			return {
 				...state,
@@ -53,4 +60,4 @@ export const userSlice = createSlice({
 	}
 })
 
-export const { setConnect, setSignup, setUsername, setInitialName, setToken } = userSlice.actions
+export const { setConnect, setSignup, setUsername, setRole, setInitialName, setToken } = userSlice.actions

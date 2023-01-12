@@ -16,8 +16,8 @@
 }
 .elcTitle{
 	text-align: center;
-	/* height: 40px; */
-	/* margin: -20px 0px 0px 0px; */
+	color: blueviolet;
+    font-size: 1.2rem;
 }
 .elcButton{
 	display: flex;
@@ -80,4 +80,7 @@
 }
 .participer{
 	width: 160px;
+}
+.blockEvent{
+	/* border-color: red; */
 }

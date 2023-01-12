@@ -6,7 +6,7 @@ import { MdLogout } from "react-icons/md";
 
 import './header.css'
 import logoImage from '../../images/logoEvent.png'
-import { setConnect, setSignup, setUsername, setInitialName, setToken } from "../../redux/user";
+import { setConnect, setSignup, setUsername, setInitialName, setToken, setRole } from "../../redux/user";
 
 function Header() {
 	// const [showConnection, setShowConnection] = React.useState(false)
@@ -36,6 +36,7 @@ function Header() {
 		dispatch(setUsername(""))
 		dispatch(setInitialName(""))
 		dispatch(setToken(""))
+		dispatch(setRole(""))
 	}
 	return (
 		<div className="header">

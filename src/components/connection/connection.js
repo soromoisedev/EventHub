@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom'
 
 // import './connection.css'
-import { setConnect, setInitialName, setSignup } from '../../redux/user';
+import { setConnect, setInitialName, setRole, setSignup } from '../../redux/user';
 import { getInitialName, setToken, setUsername } from '../../redux/user';
 
 export default function Connection() {
@@ -81,6 +81,7 @@ export default function Connection() {
 				localStorage.setItem("initialName", getInitialName(data.user.username))
 				localStorage.setItem("email", data.user.email)
 				localStorage.setItem("role", data.user.role)
+				dispatch(setRole(data.user.role))
 				dispatch(setToken(data.access_token))
 				localStorage.setItem("token", data.access_token)
 				dispatch(setConnect(false))

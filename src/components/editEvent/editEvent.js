@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Axios from '../../utils';
 
-function EditEvent({ id, setEdit }) {
+function EditEvent({ id, setEdit, update, setUpdate }) {
 	const [label, setLabel] = React.useState("")
 	const [description, setDescription] = React.useState("")
 	const [date, setDate] = React.useState("")
@@ -62,6 +62,7 @@ function EditEvent({ id, setEdit }) {
 	}
 	function handleCancel(e) {
 		e.preventDefault()
+		setUpdate(!update)
 		setEdit(false)
 	}
 	function handleChangeLocation(event) {
@@ -108,6 +109,7 @@ function EditEvent({ id, setEdit }) {
 				nbPlace: nbrPlace,
 				status: status,
 			}).then(resp => {
+				setUpdate(!update)
 				setEdit(false)
 			})
 
@@ -128,6 +130,17 @@ function EditEvent({ id, setEdit }) {
 					setEventPrice(data.price)
 					setNbrPlace(data.nbPlace)
 					setStatus(data.status)
+					if (data.status) {
+						payingButton.current.classList.add("select")
+						gratisButton.current.classList.remove("select")
+						setStatus(true)
+						eventPriceRef.current.disabled = false
+					} else {
+						payingButton.current.classList.remove("select")
+						gratisButton.current.classList.add("select")
+						setStatus(false)
+						eventPriceRef.current.disabled = true
+					}
 					console.log("la reponse est : ", resp)
 				})
 		} catch (error) {

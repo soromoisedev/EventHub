@@ -65,11 +65,10 @@ export function EventDetail() {
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}
 				<div className="buttonEventDetail">
-
 					{showBuyButton() && !bought && status && <div className="buyButton" onClick={(event) => handleBuy(event, id)}>achetter <MdOutlineAccountBalanceWallet size={25} /> </div>}
 					{showBuyButton() && !bought && !status && <div className="ecb participer" title='participer à ce concert' onClick={(event) => handleBuy(event, id)}>participer</div>}
 					{showBuyButton() && bought && <div className="ecb bought" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} >ticket pris</div>}
-
+					{/* {role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => handleDesactivateEvent(id)} >bloquer l'evenement</button>} */}
 				</div>
 			</div >
 		</div>

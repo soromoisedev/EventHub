@@ -110,6 +110,7 @@ export default function SignUp() {
 					password: password,
 				}
 				).then(response => {
+					localStorage.setItem("conMessage", "Compte crée avec succes, connectez-vous ...")
 					goConnection()
 					console.log("reponse axios est : ", response)
 				})

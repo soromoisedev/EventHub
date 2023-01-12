@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './admin.css'
 import { useSelector } from 'react-redux';
 import UserList from './userList';
-import UserListDisabled from './userListDisable';
+import EventListDisabled from './eventListDisable';
 
 function Admin() {
 	const [wantEditUser, setWantEditUser] = React.useState(false)
@@ -35,7 +35,7 @@ function Admin() {
 							<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos information personnels <MdEdit size={25} /> </button>
 							{/* <button ref={userButton} className="ecb createNewEvent dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs <MdAdd size={25} /> </button> */}
 							<Link ref={userButton} to={"/dashboard"} className="ecb dashTopButton dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs </Link>
-							<Link ref={orgButton} to={"/dashboard/user-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des utilisateur désactivé</Link>
+							<Link ref={orgButton} to={"/dashboard/event-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des evenements désactivé</Link>
 							{/* {<Link to={"/dashboard/"} className="ecb createNewEvent dashTopButton" onClick={"handleChangePageInDash"} > Liste des evenements publié </Link>} */}
 						</div>
 					</>
@@ -44,8 +44,8 @@ function Admin() {
 							<Route exact path={"/dashboard"}>
 								<UserList />
 							</Route>
-							<Route exact path={"/dashboard/user-disable"}>
-								<UserListDisabled />
+							<Route exact path={"/dashboard/event-disable"}>
+								<EventListDisabled />
 							</Route>
 						</Switch>
 					</>

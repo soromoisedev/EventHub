@@ -44,15 +44,38 @@ export function UserEventListCard({ id, title, description, location, date, nbPl
 		<>
 			<div className='elcTitle'><h3> {title} </h3></div>
 			<div className='elcDescription'> {description} </div>
+			<div className="frexLine">
+				<div className="location">
+					<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+						Lieu :
+					</span> <span className="colorElement" >{location}</span>
+				</div>
+				<div className="date">
+					<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+						Date :
+					</span> <span className="colorElement" >{date.split("T")[0]}</span> <span style={{ fontStyle: "italic", fontWeight: "normal" }} >à </span><span className="colorElement" >{date.split("T")[1]}</span>
+				</div>
+				<div className="nbPlace">
+					<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+						Place :
+					</span> <span className="colorElement" >{nbPlace}</span>
+				</div>
+			</div>
 			<div className='elcButton'>
-				{!isPublished ? <button className="ecb" onClick={() => handlePublish(id)}>Publier l'evenement</button> : <Link to={`/dashboard/participan-list-of-event/${id}`} className="ecb listUserParticipate" >
-					liste des participants à ce évenement
-				</Link>}
-				{!isPublished && <button className="ecb" onClick={() => editEvent()}>Modifier l'evenement</button>}
+				{!isPublished ?
+					<div>
+						<button className="ecb" onClick={() => handlePublish(id)}>Publier l'evenement</button>
+						<button className="ecb" onClick={() => editEvent()}>Modifier l'evenement</button>
+					</div>
+					:
+					<Link to={`/dashboard/participan-list-of-event/${id}`} className="ecb listUserParticipate" >liste des participants à ce évenement</Link>}
+				{price !== 0 && <div className="price">
+					Prix : <span className="colorElement"> {price} </span>
+				</div>}
 			</div>
 			{edit &&
 				<div className="blur">
-					<EditEvent id={id} setEdit={setEdit} />
+					<EditEvent id={id} setEdit={setEdit} update={update} setUpdate={setUpdate} />
 				</div>}
 		</>
 	)
