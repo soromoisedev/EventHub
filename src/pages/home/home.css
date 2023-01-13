@@ -133,6 +133,7 @@
   transition: 500ms;
   width: 48%;
   margin: 0 auto;
+  border: solid 2 blueviolet;
 }
 
 .card:hover {

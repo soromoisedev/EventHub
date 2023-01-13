@@ -4,12 +4,25 @@ import Axios from '../../utils';
 function EventListDisabled() {
 	const [eventList, setEventList] = useState([]);
 	const [update, setUpdate] = useState(false);
+	const [empty, setEmpty] = useState(true);
 	useEffect(() => {
 		try {
+			let isPass = true
 			Axios.get("/events/get-desactivate-event")
 				.then(response => {
-					console.log("la reponse est des : ", response.data)
+					console.log("la reponse est : ", response.data)
 					setEventList(response.data)
+					response.data?.map(el => {
+						if (el.deletedAt) {
+							console.log("je suis dans if")
+							isPass = false
+							setEmpty(false)
+						}
+					})
+					if (isPass) {
+						setEmpty(true)
+					}
+
 				})
 		} catch (error) {
 			console.log("l'erreur dans user list est : ", error);
@@ -18,21 +31,6 @@ function EventListDisabled() {
 			// console.log("je quite la liste des utilisateur");
 		};
 	}, [update]);
-
-	function desactivateUser(id) {
-		// console.log("l'id dans desactivate : ", id);
-		try {
-			Axios.delete(`/users/desactivate-user/${id}`)
-				.then(response => {
-					if (response.status === 200) {
-						setUpdate(!update)
-					}
-					// console.log("la reponse des : ", response);
-				})
-		} catch (error) {
-			console.log("l'erreur de desactivation est : ", error);
-		}
-	}
 	function activateEvent(id) {
 		Axios.get(`/events/restore-evente/${id}`)
 			.then(resp => {
@@ -73,11 +71,10 @@ function EventListDisabled() {
 								</div> : <div></div>}
 								<button className="ecb desactivate" onClick={() => activateEvent(element.id)} > Réactiver ce évènement </button>
 							</div>
-							<div className="buttonEventDetail">
-							</div>
 						</div >
 					</div>
 				))}
+				{empty && <div className="EmptyList">Aucun évènement n'est désactivé </div>}
 			</div>
 		</div>
 	);

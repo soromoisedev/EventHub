@@ -21,10 +21,11 @@ export function EventBoughtCard({ id, title, description, status, price, handleR
 			<div className='elcTitle'><h3> {title} </h3></div>
 			<div className='elcDescription'> {description} </div>
 			<div className='elcButton'>  {/* event card button : ecb */}
+				<button className="ecb removeTicket" onClick={() => setConfirm(true)} >Supprimer</button>
 				{status && <div className="price">
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}
-				<button className="ecb removeTicket" onClick={() => setConfirm(true)} >Supprimer</button>
+
 			</div>
 			{confirm &&
 				<Popup
