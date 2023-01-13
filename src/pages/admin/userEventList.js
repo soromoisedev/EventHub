@@ -44,14 +44,14 @@ function UserEventList() {
 		};
 	}, [update]);
 
-	function desactivateUser(id) {
+	function desactivateUserEvent(id) {
 		// localStorage.setItem("popupTitle", "Voulez-vous désactiver ce utilisateur ? ")
 		setActivate(false)
 		setidAction(id)
 		setConfirm(!confirm)
 	}
 
-	function activateUser(id) {
+	function activateUserEvent(id) {
 		// localStorage.setItem("popupTitle", "Voulez-vous activer ce utilisateur ? ")
 		setActivate(true)
 		setidAction(id)
@@ -61,10 +61,11 @@ function UserEventList() {
 		console.log("l'id dans activate : ", idAction);
 		let request
 		if (activate) {
-			request = `/users/restore-user/${idAction}`
+			request = `/events/restore-evente/${idAction}`
 		} else {
-			request = `/users/desactivate-user/${idAction}`
+			request = `/events/desactivate-event/${idAction}`
 		}
+		console.log("la requette est : ", request)
 		try {
 			Axios.get(request)
 				.then(response => {
@@ -79,16 +80,8 @@ function UserEventList() {
 		}
 	}
 	function popupCancel() {
-		// localStorage.removeItem("popupTitle")
 		setidAction(null)
 		setConfirm(!confirm)
-	}
-	function orgEventList(id) {
-		console.log("orgEventList : ", id);
-		Axios.get(`/events/get-event-by-admin/${id}`)
-			.then(resp => {
-				console.log("la reponse est : ", resp);
-			})
 	}
 	return (
 		<div className="userEventList">
@@ -104,7 +97,6 @@ function UserEventList() {
 					</div>
 				</div>
 				{userEventList[0]?.map((element, index) => (
-					element.deletedAt ||
 					<div className="" key={index}>
 						<div className="eventDesableCard ">
 							<div className="title">{element.title}</div>
@@ -130,7 +122,10 @@ function UserEventList() {
 								{element.status ? <div className="price">
 									Prix : <span className="colorElement"> {element.price} </span>
 								</div> : <div></div>}
-								<button className="ecb desactivate" /* onClick={() => activateEvent(element.id)} */ > Réactiver ce evenement </button>
+								{element.deletedAt ?
+									<button className="ecb desactivate" onClick={() => desactivateUserEvent(element.id)} > Désactiver ce evenement </button>
+									:
+									<button className="ecb desactivate" onClick={() => activateUserEvent(element.id)} > Réactiver ce evenement </button>}
 							</div>
 							<div className="buttonEventDetail">
 							</div>
@@ -141,7 +136,7 @@ function UserEventList() {
 			{confirm &&
 				<Popup
 					title={"Confirmer"}
-					description={!activate ? "Voulez-vous désactiver ce utilisateur ?" : "Voulez-vous réactiver ce utilisateur ?"}
+					description={!activate ? "Voulez-vous désactiver ce evenement ?" : "Voulez-vous réactiver ce evenement ?"}
 					confirmText="Confirmer"
 					cancelText="Annuler"
 					confirmFunction={popupConfirme}

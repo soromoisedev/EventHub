@@ -63,10 +63,10 @@ export function UserEventListCard({ id, title, description, location, date, nbPl
 			</div>
 			<div className='elcButton'>
 				{!isPublished ?
-					<div>
+					<>
 						<button className="ecb" onClick={() => handlePublish(id)}>Publier l'evenement</button>
 						<button className="ecb" onClick={() => editEvent()}>Modifier l'evenement</button>
-					</div>
+					</>
 					:
 					<Link to={`/dashboard/participan-list-of-event/${id}`} className="ecb listUserParticipate" >liste des participants à ce évenement</Link>}
 				{price !== 0 && <div className="price">
