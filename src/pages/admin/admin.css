@@ -34,6 +34,9 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.roleButton .buttons {
+	display: flex;
+}
 .desactivate{
 	color: #ff0000bb;
 	border-color: #ff0000bb;

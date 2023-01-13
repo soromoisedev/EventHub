@@ -17,7 +17,7 @@ function UserEventList() {
 
 	useEffect(() => {
 		try {
-			Axios.get(`/users/get-one-user${id}`)
+			Axios.get(`/users/get-one-user/${id}`)
 				.then(response => {
 					console.log("la reponse user est : ", response.data)
 					const data = response.data
@@ -27,6 +27,10 @@ function UserEventList() {
 					setRole(data.role)
 					// setUserEventList(response.data)
 				})
+		} catch (error) {
+			console.log("l'erreur dans user list est : ", error);
+		}
+		try {
 			Axios.get(`/events/get-event-by-admin/${id}`)
 				.then(resp => {
 					console.log("la reponse event by user est : ", resp);
@@ -99,12 +103,40 @@ function UserEventList() {
 						<div className="role">Role : <span className="colorElement">{role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
 					</div>
 				</div>
-				{/* {!userList.length === 0 || <div className="useListPL">{userList?.map((element, index) => (
-					element.role === "superAdmin" ||
-					<div></div>
-				))}</div>}
-				{userList.length === 0 && <div className="EmptyList"> Ce utilisateur n'a publié aucun evenement </div>
-				} */}
+				{userEventList?.map((element, index) => (
+					element.deletedAt &&
+					<div className="" key={index}>
+						<div className="eventDesableCard ">
+							<div className="title">{element.title}</div>
+							<div className="description">{element.description}</div>
+							<div className="frexLine">
+								<div className="location">
+									<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+										Lieu :
+									</span> <span className="colorElement" >{element.location}</span>
+								</div>
+								<div className="date">
+									<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+										Date :
+									</span> <span className="colorElement" >{element.date.split("T")[0]}</span> <span style={{ fontStyle: "italic", fontWeight: "normal" }} >à </span><span className="colorElement" >{element.date.split("T")[1]}</span>
+								</div>
+								<div className="nbPlace">
+									<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
+										Place :
+									</span> <span className="colorElement" >{element.nbPlace}</span>
+								</div>
+							</div>
+							<div className="elcButtonEventDesable">
+								{element.status ? <div className="price">
+									Prix : <span className="colorElement"> {element.price} </span>
+								</div> : <div></div>}
+								<button className="ecb desactivate" /* onClick={() => activateEvent(element.id)} */ > Réactiver ce evenement </button>
+							</div>
+							<div className="buttonEventDetail">
+							</div>
+						</div >
+					</div>
+				))}
 			</div>
 			{confirm &&
 				<Popup
