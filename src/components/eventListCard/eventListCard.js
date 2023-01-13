@@ -95,10 +95,10 @@ export function EventListCard({ id, title, description, status, price, orgName, 
 				<div className="orgName"> {orgName} </div>
 				<>
 					{role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => showDesactivatePopup(id)} >bloquer l'évènement</button>}
-					{showBuyButton() && !bought && status && <button className="ecb buyButton" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} ><MdOutlineAccountBalanceWallet size={25} />achetter</button>}
+					{showBuyButton() && !bought && status && <button className="ecb buyButton" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} ><MdOutlineAccountBalanceWallet size={25} />acheter</button>}
 					{showBuyButton() && bought && <button className="ecb bought" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} >ticket pris</button>}
 					{showBuyButton() && !bought && !status && <button className="ecb participer" title='participer à ce concert' onClick={(event) => handleBuy(event, id)} >participer</button>}
-					<Link to={`/eventDetail/${id}`} className="ecb infoButton">details</Link>
+					<Link to={`/eventDetail/${id}`} className="ecb infoButton">détails</Link>
 				</>
 
 			</div>
