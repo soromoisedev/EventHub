@@ -42,7 +42,7 @@ function Header() {
 		<div className="header">
 			<Link to="/" className="headerLogo">
 				<img className="logoimg" src={logoImage} alt="logo du site" ></img>
-				<div className="logotext">EventHub</div>
+				<div className="logotext">E-vent Hub</div>
 			</Link>
 			<Link to="/eventList" className='authButton EventList'> Liste des évènements</Link>
 			{username && <Link to="/dashboard/" className='authButton'> Dashboard</Link>}
