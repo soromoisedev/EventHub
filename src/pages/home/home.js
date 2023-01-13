@@ -13,10 +13,14 @@ function HomePage() {
 			<div className="presentationBox">
 				<div className="presentationImage"></div>
 				<div className="presentationText">
-					<h1>{<span className="appName animate__animated">EventHub</span>}</h1>
-					<p className="animate__bounce">
-						La plus grande plateforme d'Evenementiel en ligne !!!
-					</p>
+					<div className="wel">
+						<div className="welcome">Bienvenue sur</div>
+						<div className="appName">E-vent Hub</div>
+					</div>
+
+					<div className="smallDescr">
+						La plus grande plateforme évènementielle en ligne !!!
+					</div>
 					{/* <div className="presentationInfoBox">
 						EventHub vous permet d'acheter vos ticket pour les evenements que vous aimez, et cela
 						sans vous deplacer de chez vous.
@@ -25,13 +29,13 @@ function HomePage() {
 					</div> */}
 					<div className="presentationBottomButton animate_button">
 						<Link to="/eventList" className="myButton">
-							Liste des evenements disponible
+							Liste des évènements disponible
 						</Link>
 					</div>
 				</div>
 			</div>
 			<div className="H1">
-				<h1>Pourquoi EventHub ??</h1>
+				<h1>Pourquoi E-vent Hub ??</h1>
 			</div>
 			<div className="container">
 				<div className="row">
