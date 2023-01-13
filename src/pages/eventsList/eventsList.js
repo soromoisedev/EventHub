@@ -106,19 +106,19 @@ function EventList() {
 		<div className="eventList">
 
 			<div className="fixBoxSearch">
-				<div className="eventListTitle">Liste des evenements</div>
-				<div className="eventListInfo">Rechercher des évenements dans la bare de récherche ou sélectionner un evenement pour voire ses détails </div>
+				<div className="eventListTitle">Liste des évènements</div>
+				<div className="eventListInfo">Rechercher des évènements dans la bare de récherche ou sélectionner un évènements pour voire ses détails </div>
 				<div className="searchDiv">
 					<div className='inputSearchBox'>
 						<form onSubmit={handleSubmit}>
-							<input className="" type={"text"} placeholder="Entrer le nom de l'evenement" onChange={handleChange} />
+							<input className="" type={"text"} placeholder="Entrer le nom de l'évènement" onChange={handleChange} />
 						</form>
 						<div className='searchIcon' onClick={handleSearch}>
 							<MdSearch />
 						</div>
 					</div>
 					<div className="sortBy">
-						<div className="labelInputSpanDiv">Evenement : </div>
+						<div className="labelInputSpanDiv">Évènements : </div>
 						<div className="sortByPayment">
 							<button ref={showAll} onClick={handleShowAll} className="showAll select">tous</button>
 							<button ref={showPaying} onClick={handleShowPaying} className="paying">payant</button>

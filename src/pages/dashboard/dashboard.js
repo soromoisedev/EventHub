@@ -20,7 +20,7 @@ function Dashboard() {
 	const [wantEditUser, setWantEditUser] = React.useState(false)
 	const [dashHome, setDashHome] = React.useState(true)
 	// const userEventList = useSelector(state => state.userEventList)
-	// console.log("la liste des evenement : ", Boolean(userEventList))
+	// console.log("la liste des évènement : ", Boolean(userEventList))
 	// console.log("Dans le dash")
 	function handleCreateTask() {
 		setWantCreateTask(true)

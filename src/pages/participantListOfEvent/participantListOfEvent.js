@@ -103,7 +103,7 @@ function ParticipantListOfEvent({ set }) {
 					))}
 				</div>}
 			{participant.length !== 0 || <div className="emptyUser">
-				Aucun utilisateur n'as souscrit à ce evenement
+				Aucun utilisateur n'as souscrit à ce évènement
 			</div>
 			}
 		</div>

@@ -20,7 +20,7 @@ function HomePage() {
 					{/* <div className="presentationInfoBox">
 						EventHub vous permet d'acheter vos ticket pour les evenements que vous aimez, et cela
 						sans vous deplacer de chez vous.
-						Il permet également aux organisateurs d'évenement de faire connaître leurs evenement
+						Il permet également aux organisateurs d'évenement de faire connaître leurs évènement
 						à un plus large publique.
 					</div> */}
 					<div className="presentationBottomButton animate_button">

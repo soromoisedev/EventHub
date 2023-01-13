@@ -67,7 +67,7 @@ function UserEventList() {
 		}
 		console.log("la requette est : ", request)
 		try {
-			Axios.get(request)
+			Axios.delete(request)
 				.then(response => {
 					if (response.status === 200) {
 						setUpdate(!update)
@@ -87,7 +87,7 @@ function UserEventList() {
 		<div className="userEventList">
 			<div className="userByList">
 				{console.log("la longeur est : ", userEventList[0], "la long : ", userEventList[0])}
-				<div className="userListTitle">Liste des evenements publié par :</div>
+				<div className="userListTitle">Liste des évènements publiés par :</div>
 				<div className="userCard">
 					<div className="usernameCard">{name} </div>
 					<div className="addressCard">
@@ -114,7 +114,7 @@ function UserEventList() {
 								</div>
 								<div className="nbPlace">
 									<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
-										Place :
+										Places :
 									</span> <span className="colorElement" >{element.nbPlace}</span>
 								</div>
 							</div>
@@ -122,10 +122,10 @@ function UserEventList() {
 								{element.status ? <div className="price">
 									Prix : <span className="colorElement"> {element.price} </span>
 								</div> : <div></div>}
-								{element.deletedAt ?
-									<button className="ecb desactivate" onClick={() => desactivateUserEvent(element.id)} > Désactiver ce evenement </button>
+								{!element.deletedAt ?
+									<button className="ecb desactivate" onClick={() => desactivateUserEvent(element.id)} > Désactiver cet évènement </button>
 									:
-									<button className="ecb desactivate" onClick={() => activateUserEvent(element.id)} > Réactiver ce evenement </button>}
+									<button className="ecb desactivate" onClick={() => activateUserEvent(element.id)} > Réactiver cet évènement </button>}
 							</div>
 							<div className="buttonEventDetail">
 							</div>
@@ -136,7 +136,7 @@ function UserEventList() {
 			{confirm &&
 				<Popup
 					title={"Confirmer"}
-					description={!activate ? "Voulez-vous désactiver ce evenement ?" : "Voulez-vous réactiver ce evenement ?"}
+					description={!activate ? "Voulez-vous désactiver ce évènement ?" : "Voulez-vous réactiver ce évènement ?"}
 					confirmText="Confirmer"
 					cancelText="Annuler"
 					confirmFunction={popupConfirme}

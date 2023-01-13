@@ -33,10 +33,10 @@ function Admin() {
 					<>
 						<div className="DTitle"><span style={{ fontStyle: "italic" }} >Dashboard de </span>{localStorage.getItem('username').toUpperCase()} </div>
 						<div className="topButtons">
-							<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos information personnels <MdEdit size={25} /> </button>
+							<button className="ecb editPersonnalInfo  dashTopButton" onClick={handleEditUser} >Modifier vos informations personnelles <MdEdit size={25} /> </button>
 							{/* <button ref={userButton} className="ecb createNewEvent dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs <MdAdd size={25} /> </button> */}
 							<Link ref={userButton} to={"/dashboard"} className="ecb dashTopButton dashButtonActive" onClick={handleShowUser} > Liste des utilisateurs </Link>
-							<Link ref={orgButton} to={"/dashboard/event-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des evenements désactivé</Link>
+							<Link ref={orgButton} to={"/dashboard/event-disable"} className="ecb dashTopButton" onClick={handleShowOrg} > Liste des évènements désactivés</Link>
 							{/* {<Link to={"/dashboard/"} className="ecb createNewEvent dashTopButton" onClick={"handleChangePageInDash"} > Liste des evenements publié </Link>} */}
 						</div>
 					</>

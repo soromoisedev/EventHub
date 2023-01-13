@@ -9,7 +9,7 @@ import { setUserEvent } from '../../redux/userEventList';
 import { UserEventListCard } from '../../components/userEventListCard/userEventListCard';
 
 function EventCreateByUser({ wantCreateTask }) {
-	// Liste des evenement crée par un organisateur
+	// Liste des évènement crée par un organisateur
 	const dispatch = useDispatch()
 	const userEventList = useSelector(state => state.userEventList)
 	const [update, setUpdate] = useState(false);
@@ -37,9 +37,9 @@ function EventCreateByUser({ wantCreateTask }) {
 		<>
 			{userEventList.length > 0 ?
 				<div className="userEventList">
-					<div className="title">Liste des evennements que vous avez crée</div>
+					<div className="title">Liste des évènements que vous avez crée</div>
 					<div className='elcButton allUser'>  {/* event card button : ecb */}
-						{/* <button className="ecb listAllUserParticipate" onClick={handleAllUser} >liste des participants à tout les évenements</button> */}
+						{/* <button className="ecb listAllUserParticipate" onClick={handleAllUser} >iste des participants à tout les évenements</button> */}
 					</div>
 					<div className="eventList">
 						{userEventList.map((event) => (
@@ -62,7 +62,7 @@ function EventCreateByUser({ wantCreateTask }) {
 					</div>
 				</div> :
 				<div className="EmptyList">
-					Aucun evenement crée pour le moment
+					Aucun évènement crée pour le moment
 				</div>}
 		</>
 	);

@@ -57,18 +57,18 @@ export function UserEventListCard({ id, title, description, location, date, nbPl
 				</div>
 				<div className="nbPlace">
 					<span style={{ fontStyle: "italic", fontWeight: "normal" }} >
-						Place :
+						Places :
 					</span> <span className="colorElement" >{nbPlace}</span>
 				</div>
 			</div>
 			<div className='elcButton'>
 				{!isPublished ?
 					<>
-						<button className="ecb" onClick={() => handlePublish(id)}>Publier l'evenement</button>
-						<button className="ecb" onClick={() => editEvent()}>Modifier l'evenement</button>
+						<button className="ecb" onClick={() => handlePublish(id)}>Publier l'évènement</button>
+						<button className="ecb" onClick={() => editEvent()}>Modifier l'évènement</button>
 					</>
 					:
-					<Link to={`/dashboard/participan-list-of-event/${id}`} className="ecb listUserParticipate" >liste des participants à ce évenement</Link>}
+					<Link to={`/dashboard/participan-list-of-event/${id}`} className="ecb listUserParticipate" >Liste des participants à ce évenement</Link>}
 				{price !== 0 && <div className="price">
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}

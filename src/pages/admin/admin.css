@@ -48,6 +48,7 @@
 }
 .roleButton .showEventList{
 	width: auto;
+	text-decoration: none;
 }
 .usernameCard {
 	text-align: center;
@@ -131,3 +132,4 @@
 .userEventList .phoneNumber{
 	margin: 0px;
 }
+/* .userEventList . */

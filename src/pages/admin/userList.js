@@ -72,7 +72,7 @@ function UserList() {
 		<div>
 			<div className="userByList">
 				{console.log("la longeur est : ", userList, "la long : ", userList.length)}
-				<div className="userListTitle">Liste des utilisateur de la plate-forme</div>
+				<div className="userListTitle">Liste des utilisateurs de la plate-forme</div>
 				{!userList.length === 0 || <div className="useListPL">{userList?.map((element, index) => (
 					element.role === "superAdmin" ||
 					<div className="userCard" key={index}>
@@ -85,10 +85,10 @@ function UserList() {
 							<div className="role">Role : <span className="colorElement">{element?.role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
 							<div className="buttons">
 								{!element.deletedAt ?
-									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
+									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>Bloquer</button>
 									:
-									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>débloquer</button>}
-								{element?.role === "organizer" && !element.deletedAt && <Link to={`/dashboard/user-event-list/${element.id}`} className="ecb showEventList" onClick={() => orgEventList(element.id)} >voir ses evenement</Link>}
+									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>Débloquer</button>}
+								{element?.role === "organizer" && !element.deletedAt && <Link to={`/dashboard/user-event-list/${element.id}`} className="ecb showEventList" onClick={() => orgEventList(element.id)} >Voir ses évènements</Link>}
 							</div>
 						</div>
 					</div>
@@ -99,7 +99,7 @@ function UserList() {
 			{confirm &&
 				<Popup
 					title={"Confirmer"}
-					description={!activate ? "Voulez-vous désactiver ce utilisateur ?" : "Voulez-vous réactiver ce utilisateur ?"}
+					description={!activate ? "Voulez-vous bloquer ce utilisateur ?" : "Voulez-vous débloquer ce utilisateur ?"}
 					confirmText="Confirmer"
 					cancelText="Annuler"
 					confirmFunction={popupConfirme}

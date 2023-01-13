@@ -7,7 +7,7 @@ import { setUserEventParticipate } from '../../redux/userEventParticipate'
 import Axios from '../../utils'
 
 function EventParticipate() {
-	// Liste des evenement auquels l'utilisateur souhaite participer
+	// Liste des évènement auquels l'utilisateur souhaite participer
 	// const [eventList, setEventList] = React.useState([{}])
 	const eventList = useSelector(state => state.userEventParticipate)
 	const dispatch = useDispatch()
@@ -34,10 +34,10 @@ function EventParticipate() {
 		<>
 			{eventList.length > 0 ?
 				<div className="userEventList">
-					<div className="title">Liste des evennements pour lesquels vous avez pris un ticket</div>
+					<div className="title">Liste des évènements pour lesquels vous avez pris un ticket</div>
 					<div className="eventList">
 						{eventList.map((event, index) => (
-							console.log(event),
+							// console.log(event),
 							<div className='eventListCard' key={index} >
 								<EventBoughtCard id={event.id}
 									// let evente = event

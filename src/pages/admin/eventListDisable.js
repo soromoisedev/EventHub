@@ -71,7 +71,7 @@ function EventListDisabled() {
 								{element.status ? <div className="price">
 									Prix : <span className="colorElement"> {element.price} </span>
 								</div> : <div></div>}
-								<button className="ecb desactivate" onClick={() => activateEvent(element.id)} > Réactiver ce evenement </button>
+								<button className="ecb desactivate" onClick={() => activateEvent(element.id)} > Réactiver ce évènement </button>
 							</div>
 							<div className="buttonEventDetail">
 							</div>

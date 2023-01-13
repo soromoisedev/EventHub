@@ -15,6 +15,7 @@ export function EventDetail() {
 	const { title, description, date, status, location, price, nbPlace } = useSelector(state => state.eventList)?.filter(el => el["id"] === Number(id))[0]
 	const [bought, setBought] = React.useState(false)
 	const dispatch = useDispatch()
+	const role = useSelector(state => state.user.role)
 	let [eventDate, eventHour] = date.split("T")
 	function handleBuy(event, id) {
 		try {
@@ -65,10 +66,10 @@ export function EventDetail() {
 					Prix : <span className="colorElement"> {price} </span>
 				</div>}
 				<div className="buttonEventDetail">
-					{showBuyButton() && !bought && status && <div className="buyButton" onClick={(event) => handleBuy(event, id)}>achetter <MdOutlineAccountBalanceWallet size={25} /> </div>}
-					{showBuyButton() && !bought && !status && <div className="ecb participer" title='participer à ce concert' onClick={(event) => handleBuy(event, id)}>participer</div>}
-					{showBuyButton() && bought && <div className="ecb bought" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} >ticket pris</div>}
-					{/* {role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => handleDesactivateEvent(id)} >bloquer l'evenement</button>} */}
+					{(role === "user" || !role) && !bought && status && <div className="buyButton" onClick={(event) => handleBuy(event, id)}>achetter <MdOutlineAccountBalanceWallet size={25} /> </div>}
+					{(role === "user" || !role) && !bought && !status && <div className="ecb participer" title='participer à ce concert' onClick={(event) => handleBuy(event, id)}>participer</div>}
+					{(role === "user" || !role) && bought && <div className="ecb bought" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} >ticket pris</div>}
+					{/* {role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => handleDesactivateEvent(id)} >bloquer l'évènement</button>} */}
 				</div>
 			</div >
 		</div>

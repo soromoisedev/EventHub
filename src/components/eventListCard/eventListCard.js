@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import showBuyButton from '../../myFunction'
 import { setTicketList } from '../../redux/ticketList'
 import { setConnect } from '../../redux/user'
 import Axios from '../../utils'
+import Popup from '../popup/Popup'
 
 import './eventListCard.css'
 
@@ -13,9 +14,11 @@ export function EventListCard({ id, title, description, status, price, orgName, 
 	// console.log("le state est : ", state);
 	const [bought, setBought] = React.useState(false)
 	// const [ticketList, setTicketList] = useState([]);
+	const [confirm, setConfirm] = useState(false);
 	const dispatch = useDispatch()
 	const ticketList = useSelector(state => state.ticketList)
 	const role = useSelector(state => state.user.role)
+	const [desId, setdesId] = useState(0);
 
 	function handleBuy(event, id) {
 		try {
@@ -65,16 +68,24 @@ export function EventListCard({ id, title, description, status, price, orgName, 
 		}
 	}, [])
 
-	function handleDesactivateEvent(id) {
+	function handleDesactivateEvent() {
 		try {
-			Axios.delete(`/events/desactivate-event/${id}`)
+			Axios.delete(`/events/desactivate-event/${desId}`)
 				.then(resp => {
-					console.log("la reponse de desactivation de l'evenement est : ", resp);
+					console.log("la reponse de desactivation de l'évènement est : ", resp);
 					setData(!data)
 				})
 		} catch (error) {
-			console.log("l'erreur de desactivation de l'evenement est : ", error);
+			console.log("l'erreur de desactivation de l'évènement est : ", error);
 		}
+	}
+
+	function showDesactivatePopup(id) {
+		setdesId(id)
+		setConfirm(true)
+	}
+	function popupCancel() {
+		setConfirm(false)
 	}
 	return (
 		<>
@@ -83,7 +94,7 @@ export function EventListCard({ id, title, description, status, price, orgName, 
 			<div className='elcButton'>  {/* event card button : ecb */}
 				<div className="orgName"> {orgName} </div>
 				<>
-					{role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => handleDesactivateEvent(id)} >bloquer l'evenement</button>}
+					{role === "superAdmin" && <button className="ecb desactivate blockEvent" onClick={() => showDesactivatePopup(id)} >bloquer l'évènement</button>}
 					{showBuyButton() && !bought && status && <button className="ecb buyButton" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} ><MdOutlineAccountBalanceWallet size={25} />achetter</button>}
 					{showBuyButton() && bought && <button className="ecb bought" title='Achetter un ticket pour ce concert' onClick={(event) => handleBuy(event, id)} >ticket pris</button>}
 					{showBuyButton() && !bought && !status && <button className="ecb participer" title='participer à ce concert' onClick={(event) => handleBuy(event, id)} >participer</button>}
@@ -94,6 +105,17 @@ export function EventListCard({ id, title, description, status, price, orgName, 
 			{status && <div className="price">
 				Prix : <span className="colorElement"> {price} </span>
 			</div>}
+
+			{confirm &&
+				<Popup
+					title={"Confirmer"}
+					description={"Voulez-vous désactiver ce évènement ?"}
+					confirmText="Confirmer"
+					cancelText="Annuler"
+					confirmFunction={handleDesactivateEvent}
+					cancelFunction={popupCancel}
+				/>
+			}
 		</>
 	)
 }

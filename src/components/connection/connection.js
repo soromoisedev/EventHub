@@ -123,12 +123,12 @@ export default function Connection() {
 				</div>
 				<div className="buttonParent" >
 					<input type="submit" value="Fermer" className="myButton validateButton CloseButton" onClick={handleCloseAuth} />
-					<input type="submit" value="Se connecter" className="myButton validateButton SubmitButton" onClick={handleSubmit} />
+					<input type="submit" value="Se Connecter" className="myButton validateButton SubmitButton" onClick={handleSubmit} />
 				</div>
 			</form>
 			<div className='authFoot'>
 				<span>Vous n'avez pas de compte? </span>
-				<span className='footerBoxLink' onClick={goSignup} >crééz-en ici</span>
+				<span className='footerBoxLink' onClick={goSignup} >créez-en ici</span>
 			</div>
 		</div>
 	);

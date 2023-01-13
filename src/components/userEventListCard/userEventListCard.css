@@ -1,6 +1,7 @@
 .listUserParticipate{
 	width: max-content;
 	font-size: 1.0rem;
+	text-decoration: none;
 }
 .listAllUserParticipate{
 	width: max-content;
@@ -22,6 +23,7 @@
 .userEventList .elcButton {
 	display: flex;
 	margin: 10px 0 0 0;
+	direction: ltr;
 	justify-content: space-between;
 }
 .userEventList .price {

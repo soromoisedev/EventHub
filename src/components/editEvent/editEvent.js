@@ -89,7 +89,7 @@ function EditEvent({ id, setEdit, update, setUpdate }) {
 			lieldFull = false
 		}
 		if (status && (!eventPrice || eventPrice <= 0)) {
-			eventPriceErrorRef.current.innerHTML = "le prix d'un evenement payant doit-être supperieur à 0"
+			eventPriceErrorRef.current.innerHTML = "le prix d'un évènement payant doit-être supperieur à 0"
 			lieldFull = false
 		}
 		if (!location) {
@@ -144,35 +144,35 @@ function EditEvent({ id, setEdit, update, setUpdate }) {
 					console.log("la reponse est : ", resp)
 				})
 		} catch (error) {
-			console.log("Erreur de recuperation des information de l'evenement, l'erreur est : ", error)
+			console.log("Erreur de recuperation des information de l'évènement, l'erreur est : ", error)
 		}
 	}, []);
 	return (
 		<div className="createEventBox">
 			<div className='createEventHead'>
-				Modification de l'evenement
+				Modification de l'évènement
 			</div>
 			<form className='createEventFrom' >
 				<div className="createEventBody">
 					<label className="labelInput">
 						<span className="labelInputSpan" >titre</span>
-						<input className="newEventLabel" type="text" required name="label" placeholder="Enter le libélé de l'evenement ici" value={label} onChange={handleChangeLabel} />
+						<input className="newEventLabel" type="text" required name="label" placeholder="Enter le libélé de l'évènement ici" value={label} onChange={handleChangeLabel} />
 						<div ref={labelErrorRef} className='errorMessage'></div>
 					</label>
 					<label className="labelInput">
 						<span className="labelInputSpan" >lieu</span>
-						<input className="newEventLabel" type="text" required name="label" placeholder="Saisir le lieu où se tiendra l'evenement" value={location} onChange={handleChangeLocation} />
+						<input className="newEventLabel" type="text" required name="label" placeholder="Saisir le lieu où se tiendra l'évènement" value={location} onChange={handleChangeLocation} />
 						<div ref={locationErrorRef} className='errorMessage'></div>
 					</label>
 					<label className="labelInput">
 						<span className="labelInputSpan" >Description</span>
-						<textarea className="descriptionNewEvent" type="text" required name="description" placeholder="Saisir une description de l'evenement ..." value={description} onChange={handleChangeDescription}>soro</textarea>
+						<textarea className="descriptionNewEvent" type="text" required name="description" placeholder="Saisir une description de l'évènement ..." value={description} onChange={handleChangeDescription}>soro</textarea>
 						<div ref={descriptionlErrorRef} className='errorMessage'></div>
 					</label>
 					<div className="dateStatusNbrPlace">
 						<label className="labelInput">
-							<span className="labelInputSpan" >La date et l'heur de l'evenement</span>
-							<input type={"datetime-local"} required name="date" placeholder="Entrer la date et l'heur de l'evenement" value={date} onChange={handleChangeDate} />
+							<span className="labelInputSpan" >La date et l'heur de l'évènement</span>
+							<input type={"datetime-local"} required name="date" placeholder="Entrer la date et l'heur de l'évènement" value={date} onChange={handleChangeDate} />
 							<div ref={dateErrorRef} className='errorMessage'></div>
 						</label>
 						<label className="labelInput">
@@ -183,7 +183,7 @@ function EditEvent({ id, setEdit, update, setUpdate }) {
 					</div>
 					<div className="dateStatusNbrPlace">
 						<label className="labelInput ">
-							<span className="labelInputSpan" >l'evenement est-il gratuit ou payant ?</span>
+							<span className="labelInputSpan" >l'évènement est-il gratuit ou payant ?</span>
 							<div className="payment">
 								<button ref={payingButton} className="paying select" onClick={handlePaying} >payant</button>
 								<button ref={gratisButton} className="gratis" onClick={handleGratis} >gratuit</button>

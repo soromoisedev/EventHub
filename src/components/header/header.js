@@ -44,11 +44,11 @@ function Header() {
 				<img className="logoimg" src={logoImage} alt="logo du site" ></img>
 				<div className="logotext">EventHub</div>
 			</Link>
-			<Link to="/eventList" className='authButton EventList'> Liste des évenements</Link>
+			<Link to="/eventList" className='authButton EventList'> Liste des évènements</Link>
 			{username && <Link to="/dashboard/" className='authButton'> Dashboard</Link>}
 			{!username ? <div className="headerButtons">
-				<div className="authButton" onClick={handleConnection} >se connecter</div>
-				<div className="authButton" onClick={handleSignup} >cree un compte</div>
+				<div className="authButton" onClick={handleConnection} >Se Connecter</div>
+				<div className="authButton" onClick={handleSignup} >Créer un compte</div>
 			</div>
 				:
 				<div className="circleLogout">
