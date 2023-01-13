@@ -82,11 +82,8 @@ img.logoimg {
 	justify-content: center;
 	margin-right: 10px;
 	align-self: center;
-	/* cursor: pointer; */
-	/* box-shadow: 0px 0px 5px 10px white; */
 }
 .userCircle:hover{
-	/* box-shadow: 0px 0px 20px 1px #ffffffe1; */
 }
 .circleLogout {
 	display: flex;
@@ -98,3 +95,4 @@ svg.logout:hover {
 	height: 27px;
 	width: 27px;
 }
+/****************** RESPONSIVE ******************/

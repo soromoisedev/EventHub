@@ -78,7 +78,6 @@ body{
 .myButton:hover{
   box-shadow: 2px 2px 10px #6a8c86;
 	border: solid 3px blueviolet;
-	/* color: white; */
 }
 .buttonParent{
 	display: flex;
@@ -148,4 +147,10 @@ input:active{
 .footerBoxLink{
 	color: blueviolet;
 	cursor: pointer;
+}
+button{
+	height: 47px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

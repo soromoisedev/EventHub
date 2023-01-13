@@ -8,6 +8,7 @@ import './admin.css'
 import { useSelector } from 'react-redux';
 import UserList from './userList';
 import EventListDisabled from './eventListDisable';
+import UserEventList from './userEventList';
 
 function Admin() {
 	const [wantEditUser, setWantEditUser] = React.useState(false)
@@ -44,8 +45,11 @@ function Admin() {
 							<Route exact path={"/dashboard"}>
 								<UserList />
 							</Route>
-							<Route exact path={"/dashboard/event-disable"}>
+							<Route path={"/dashboard/event-disable"}>
 								<EventListDisabled />
+							</Route>
+							<Route path={"/dashboard/user-event-list"}>
+								<UserEventList />
 							</Route>
 						</Switch>
 					</>

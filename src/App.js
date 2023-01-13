@@ -10,7 +10,7 @@ import EventList from "./pages/eventsList/eventsList";
 import './style.css'
 import { EventDetail } from "./pages/eventDetail/eventDetail";
 import Dashboard from "./pages/dashboard/dashboard";
-import { setUsername, setInitialName, setToken } from "./redux/user";
+import { setUsername, setInitialName, setToken, setRole } from "./redux/user";
 import Admin from "./pages/admin/admin";
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   dispatch(setUsername(localStorage.getItem('username') || ""))
   dispatch(setInitialName(localStorage.getItem('initialName') || ""))
   dispatch(setToken(localStorage.getItem('token') || ""))
+  dispatch(setRole(localStorage.getItem("role") || ""))
 
   return (
     <div className="App">

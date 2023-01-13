@@ -3,19 +3,34 @@ import { Link } from 'react-router-dom';
 import Popup from '../../components/popup/Popup';
 import Axios from '../../utils';
 
-function UserList() {
-	const [userList, setUserList] = useState([]);
+function UserEventList() {
+	const [name, setName] = React.useState("")
+	const [contact, setContact] = React.useState("")
+	const [email, setEmail] = React.useState("")
+	const [role, setRole] = React.useState("")
+	const [userEventList, setUserEventList] = useState([]);
 	const [update, setUpdate] = useState(false);
 	const [confirm, setConfirm] = useState(false);
 	const [idAction, setidAction] = useState(null);
 	const [activate, setActivate] = useState(true);
+	const [id, setId] = useState(localStorage.getItem("userId"));
 
 	useEffect(() => {
 		try {
-			Axios.get("/users/get-all-users")
+			Axios.get(`/users/get-one-user${id}`)
 				.then(response => {
-					console.log("la reponse est : ", response.data)
-					setUserList(response.data)
+					console.log("la reponse user est : ", response.data)
+					const data = response.data
+					setName(data.username)
+					setContact(data.contacts)
+					setEmail(data.email)
+					setRole(data.role)
+					// setUserEventList(response.data)
+				})
+			Axios.get(`/events/get-event-by-admin/${id}`)
+				.then(resp => {
+					console.log("la reponse event by user est : ", resp);
+					setUserEventList(resp.data)
 				})
 		} catch (error) {
 			console.log("l'erreur dans user list est : ", error);
@@ -66,35 +81,30 @@ function UserList() {
 	}
 	function orgEventList(id) {
 		console.log("orgEventList : ", id);
-		localStorage.setItem("userId", id)
+		Axios.get(`/events/get-event-by-admin/${id}`)
+			.then(resp => {
+				console.log("la reponse est : ", resp);
+			})
 	}
 	return (
-		<div>
+		<div className="userEventList">
 			<div className="userByList">
-				{console.log("la longeur est : ", userList, "la long : ", userList.length)}
-				<div className="userListTitle">Liste des utilisateur de la plate-forme</div>
-				{!userList.length === 0 || <div className="useListPL">{userList?.map((element, index) => (
-					element.role === "superAdmin" ||
-					<div className="userCard" key={index}>
-						<div className="usernameCard">{element?.username} </div>
-						<div className="addressCard">
-							<div className="email">Email : <span className="colorElement"> {element?.email}</span></div>
-							<div className="phoneNumber">Contact : <span className="colorElement"> {element?.contacts}</span></div>
-						</div>
-						<div className="roleButton">
-							<div className="role">Role : <span className="colorElement">{element?.role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
-							<div className="buttons">
-								{!element.deletedAt ?
-									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
-									:
-									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>débloquer</button>}
-								{element?.role === "organizer" && <Link to={"/dashboard/user-event-list"} className="ecb showEventList" onClick={() => orgEventList(element.id)} >voir ses evenement</Link>}
-							</div>
-						</div>
+				{console.log("la longeur est : ", userEventList, "la long : ", userEventList.length)}
+				<div className="userListTitle">Liste des evenements publié par :</div>
+				<div className="userCard">
+					<div className="usernameCard">{name} </div>
+					<div className="addressCard">
+						<div className="email">Email : <span className="colorElement"> {email}</span></div>
+						<div className="number">Contact : <span className="colorElement"> {contact}</span></div>
+						<div className="role">Role : <span className="colorElement">{role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
 					</div>
+				</div>
+				{/* {!userList.length === 0 || <div className="useListPL">{userList?.map((element, index) => (
+					element.role === "superAdmin" ||
+					<div></div>
 				))}</div>}
-				{userList.length === 0 && <div className="EmptyList">Il n'y a aucun utilisateur sur cette plate-forme </div>
-				}
+				{userList.length === 0 && <div className="EmptyList"> Ce utilisateur n'a publié aucun evenement </div>
+				} */}
 			</div>
 			{confirm &&
 				<Popup
@@ -110,4 +120,4 @@ function UserList() {
 	);
 }
 
-export default UserList;
+export default UserEventList;

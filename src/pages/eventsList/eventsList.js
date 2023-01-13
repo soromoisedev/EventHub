@@ -37,7 +37,7 @@ function EventList() {
 		// 	request = request + "status=true"
 		// }
 		if (searchData) {
-			request = request + separator + "title=" + searchData
+			request = request + separator + "search=" + searchData
 			separator = "&"
 		}
 		if (limit !== 0) {
@@ -45,7 +45,7 @@ function EventList() {
 			request = request + separator + "limit=" + limit
 			separator = "&"
 		}
-		// console.log("la requette final est : ", request);
+		console.log("la requette final est : ", request);
 		Axios.get(request)
 			.then((response) => {
 				// setData(response.data)
@@ -96,6 +96,12 @@ function EventList() {
 		setSearchData(searchData)
 		setData(!data)
 	}
+	function handleChange(e) {
+		setSearchData(e.target.value)
+		if (searchData) {
+			setData(!data)
+		}
+	}
 	return (
 		<div className="eventList">
 
@@ -105,7 +111,7 @@ function EventList() {
 				<div className="searchDiv">
 					<div className='inputSearchBox'>
 						<form onSubmit={handleSubmit}>
-							<input className="" type={"text"} placeholder="Entrer le nom de l'evenement" onChange={(e) => setSearchData(e.target.value)} />
+							<input className="" type={"text"} placeholder="Entrer le nom de l'evenement" onChange={handleChange} />
 						</form>
 						<div className='searchIcon' onClick={handleSearch}>
 							<MdSearch />

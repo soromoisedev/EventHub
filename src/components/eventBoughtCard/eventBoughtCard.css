@@ -10,4 +10,5 @@
 .removeTicket:hover{
 	border: none;
 	background: #ff0000bd;
+	/* color: white; */
 }
