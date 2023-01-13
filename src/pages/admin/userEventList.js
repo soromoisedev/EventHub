@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Popup from '../../components/popup/Popup';
 import Axios from '../../utils';
 
@@ -13,7 +13,7 @@ function UserEventList() {
 	const [confirm, setConfirm] = useState(false);
 	const [idAction, setidAction] = useState(null);
 	const [activate, setActivate] = useState(true);
-	const [id, setId] = useState(localStorage.getItem("userId"));
+	const { id } = useParams()
 
 	useEffect(() => {
 		try {
@@ -93,7 +93,7 @@ function UserEventList() {
 	return (
 		<div className="userEventList">
 			<div className="userByList">
-				{console.log("la longeur est : ", userEventList, "la long : ", userEventList.length)}
+				{console.log("la longeur est : ", userEventList[0], "la long : ", userEventList[0])}
 				<div className="userListTitle">Liste des evenements publié par :</div>
 				<div className="userCard">
 					<div className="usernameCard">{name} </div>
@@ -103,8 +103,8 @@ function UserEventList() {
 						<div className="role">Role : <span className="colorElement">{role === "user" ? "Utilisateur" : "Organisateur"}</span></div>
 					</div>
 				</div>
-				{userEventList?.map((element, index) => (
-					element.deletedAt &&
+				{userEventList[0]?.map((element, index) => (
+					element.deletedAt ||
 					<div className="" key={index}>
 						<div className="eventDesableCard ">
 							<div className="title">{element.title}</div>

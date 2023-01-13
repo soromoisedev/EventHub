@@ -48,7 +48,7 @@ function Admin() {
 							<Route path={"/dashboard/event-disable"}>
 								<EventListDisabled />
 							</Route>
-							<Route path={"/dashboard/user-event-list"}>
+							<Route path={"/dashboard/user-event-list/:id"}>
 								<UserEventList />
 							</Route>
 						</Switch>

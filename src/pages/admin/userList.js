@@ -88,7 +88,7 @@ function UserList() {
 									<button className="ecb desactivate" title='desactiver se compte' onClick={() => desactivateUser(element.id)}>bloquer</button>
 									:
 									<button className="ecb activate" title='réactiver se compte' onClick={() => activateUser(element.id)}>débloquer</button>}
-								{element?.role === "organizer" && <Link to={"/dashboard/user-event-list"} className="ecb showEventList" onClick={() => orgEventList(element.id)} >voir ses evenement</Link>}
+								{element?.role === "organizer" && <Link to={`/dashboard/user-event-list/${element.id}`} className="ecb showEventList" onClick={() => orgEventList(element.id)} >voir ses evenement</Link>}
 							</div>
 						</div>
 					</div>
