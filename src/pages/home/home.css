@@ -119,26 +119,36 @@
 }
 .container {
   width: 100%;
+  margin: 60px 0 0 0;
 }
-
+.row {
+  display: flex;
+  height: 600px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 .card {
-  margin-top: 100px;
-  margin-bottom: 100px;
   height: 400px;
   border-radius: 8px;
   transition: 500ms;
+  width: 48%;
+  margin: 0 auto;
 }
 
 .card:hover {
   box-shadow: 2px 2px 40px 0px #4c4a4a;
   height: 450px;
 }
-
 .card-header {
   height: 25%;
   background-color: blueviolet;
+  top: 0px;
+  position: relative;
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
-
 .card-title {
   text-align: center;
   color: #ffffff;

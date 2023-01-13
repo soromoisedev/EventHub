@@ -39,31 +39,27 @@ function HomePage() {
 			</div>
 			<div className="container">
 				<div className="row">
-					<div className="col-lg-6">
-						<div className="card">
-							<div className="card-header">
-								<h5 className="card-title">GRAND PUBLIC</h5>
-							</div>
-							<div className="card-body">
-								<p className="card-text animate_text">
-									Vous pouvez consultez les évenements à venir, achetez des
-									tickets ou participez à des évènements.
-								</p>
-							</div>
+					<div className="card">
+						<div className="card-header">
+							<h5 className="card-title">GRAND PUBLIC</h5>
+						</div>
+						<div className="card-body">
+							<p className="card-text animate_text">
+								Vous pouvez consultez les évenements à venir, achetez des
+								tickets ou participez à des évènements.
+							</p>
 						</div>
 					</div>
-					<div className="col-lg-6">
-						<div className="card">
-							<div className="card-header">
-								<h5 className="card-title">ORGANISATEURS</h5>
-							</div>
-							<div className="card-body">
-								<p className="card-text animate_text_2">
-									La plateforme idéale pour créer et publiez des évènements, et
-									faire du profit. Vous pouvez aussi vous créer une communauté
-									autour de vos services.
-								</p>
-							</div>
+					<div className="card">
+						<div className="card-header">
+							<h5 className="card-title">ORGANISATEURS</h5>
+						</div>
+						<div className="card-body">
+							<p className="card-text animate_text_2">
+								La plateforme idéale pour créer et publiez des évènements, et
+								faire du profit. Vous pouvez aussi vous créer une communauté
+								autour de vos services.
+							</p>
 						</div>
 					</div>
 				</div>
